@@ -6,27 +6,36 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="book_ws" />
+        <module name="users_ws_common" />
         <module name="common" />
-        <module name="order_ws" />
         <module name="users_ws" />
+        <module name="book_ws" />
+        <module name="order_ws" />
+        <module name="books_ws_common" />
+        <module name="order_ws_common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="book_ws" target="1.8" />
+      <module name="books_ws_common" target="1.8" />
       <module name="common" target="1.8" />
       <module name="order_ws" target="1.8" />
+      <module name="order_ws_common" target="1.8" />
       <module name="Spring_Event_diriven_app" target="1.8" />
       <module name="users_ws" target="1.8" />
+      <module name="users_ws_common" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Spring_Event_diriven_app" options="-parameters" />
       <module name="book_ws" options="-parameters" />
+      <module name="books_ws_common" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="order_ws" options="-parameters" />
+      <module name="order_ws_common" options="-parameters" />
       <module name="users_ws" options="-parameters" />
+      <module name="users_ws_common" options="-parameters" />
     </option>
   </component>
 </project>

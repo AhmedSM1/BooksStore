@@ -9,18 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>common</artifactId>
-
-    <packaging>jar</packaging>
-<dependencies>
+    <artifactId>books_ws_common</artifactId>
 
 
-    <dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-lang3</artifactId>
-    <version>3.9</version>
-</dependency>
-
-
-</dependencies>
 </project>

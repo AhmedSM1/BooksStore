@@ -4,9 +4,12 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Spring_Event_diriven_app.iml" filepath="$PROJECT_DIR$/Spring_Event_diriven_app.iml" />
       <module fileurl="file://$PROJECT_DIR$/book_ws/book_ws.iml" filepath="$PROJECT_DIR$/book_ws/book_ws.iml" />
+      <module fileurl="file://$PROJECT_DIR$/books_ws_common/books_ws_common.iml" filepath="$PROJECT_DIR$/books_ws_common/books_ws_common.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/order_ws/order_ws.iml" filepath="$PROJECT_DIR$/order_ws/order_ws.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order_ws_common/order_ws_common.iml" filepath="$PROJECT_DIR$/order_ws_common/order_ws_common.iml" />
       <module fileurl="file://$PROJECT_DIR$/users_ws/users_ws.iml" filepath="$PROJECT_DIR$/users_ws/users_ws.iml" />
+      <module fileurl="file://$PROJECT_DIR$/users_ws_common/users_ws_common.iml" filepath="$PROJECT_DIR$/users_ws_common/users_ws_common.iml" />
     </modules>
   </component>
 </project>
