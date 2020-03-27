@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="book_ws" />
+        <module name="common" />
+        <module name="order_ws" />
+        <module name="users_ws" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="book_ws" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="order_ws" target="1.8" />
+      <module name="Spring_Event_diriven_app" target="1.8" />
+      <module name="users_ws" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Spring_Event_diriven_app" options="-parameters" />
+      <module name="book_ws" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="order_ws" options="-parameters" />
+      <module name="users_ws" options="-parameters" />
+    </option>
+  </component>
+</project>
