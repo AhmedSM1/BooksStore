@@ -32,11 +32,6 @@ public class Book {
     @Column(name = "BOOk_TITLE", nullable = false)
     private String bookTitle;
 
-    
-    
-    private Author author;
-
-
     @Column(name = "BOOK_DESCRIPTION")
     private String description;
 
