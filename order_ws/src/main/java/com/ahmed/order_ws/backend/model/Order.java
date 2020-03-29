@@ -8,19 +8,28 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "order")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="order_item")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDER_ID", updatable = false, nullable = false)
     private Long orderID;
 

@@ -28,10 +28,9 @@ public class OrderItem {
 
     
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDER_ITEM_ID", updatable = false, nullable = false)
-    private String orderItemId;
+    private Long orderItemId;
     
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
@@ -41,11 +40,12 @@ public class OrderItem {
     @Column(name = "BOOK_ID", nullable = false)
     private String bookId;
     
+    @Column(name = "QUANTITY", nullable = false)
     private int quantity;
     
     @Column(name = "ORDER_BOOK_PRICE", nullable = false)
     private double orderBookPrice;
     
 
-     
+   
 }
