@@ -2,7 +2,7 @@ version: "3"
 services:
 
   zookeeper:
-    image: eventuateio/eventuateio-local-zookeeper:${eventuateLocalVersion}
+    image: eventuateio/eventuateio-local-zookeeper
     container_name: zookeeper
     ports:
       - 2181:2181
@@ -10,7 +10,7 @@ services:
       - 3888:3888
 
   kafka:
-    image: eventuateio/eventuateio-local-kafka:${eventuateLocalVersion}
+    image: eventuateio/eventuateio-local-kafka
     container_name: kafka
     ports:
       - 9092:9092
@@ -22,7 +22,7 @@ services:
       - ZOOKEEPER_SERVERS=zookeeper:2181
 
   mysql:
-    build: ./mysql
+    image: mysql
     container_name: mysql
     ports:
       - 3306:3306
@@ -31,14 +31,14 @@ services:
       - MYSQL_USER=mysqluser
       - MYSQL_PASSWORD=mysqlpw
 
-  mongo:
-    image: mongo:3.4.6
-    container_name: query_db
-    ports:
-      - "27017:27017"
+  # mongo:
+  #   image: mongo:3.4.6
+  #   container_name: query_db
+  #   ports:
+  #     - "27017:27017"
 
   cdcservice:
-    image: eventuateio/eventuateio-local-new-cdc-service:${eventuateLocalVersion}
+    image: eventuateio/eventuateio-local-new-cdc-service
     container_name: cdcservice
     ports:
       - "8099:8080"
@@ -65,11 +65,11 @@ services:
         "cdcDbPassword":"rootpassword",
         "oldDebeziumDbHistoryTopicName":"none"}]
 
-  configservice:
-    image: tawcd.stc.com.sa/supportservices/configservice:22
-    container_name: config_service
-    ports:
-      - "8888:8888"
+  # configservice:
+  #   image: tawcd.stc.com.sa/supportservices/configservice:22
+  #   container_name: config_service
+  #   ports:
+  #     - "8888:8888"
 
 #  configservice:
 #      image: tawcd.stc.com.sa/config-prod
@@ -80,22 +80,22 @@ services:
 #          - TZ=Asia/Riyadh
 #          - SPRING_PROFILES_ACTIVE=prod
 
-  crmuserservice:
-    image: tawcd.stc.com.sa/crmadapter-r0-02
-    container_name: crm_users_adapter
-    links:
-      - mysql
-    ports:
-      - "1445:1445"
-    environment:
-      - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
+  # crmuserservice:
+  #   image: tawcd.stc.com.sa/crmadapter-r0-02
+  #   container_name: crm_users_adapter
+  #   links:
+  #     - mysql
+  #   ports:
+  #     - "1445:1445"
+  #   environment:
+  #     - SPRING_PROFILES_ACTIVE=dev
+  #     - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
 
-  redis:
-    image: redis
-    container_name: redis
-    ports:
-      - "6379:6379"
+  # redis:
+  #   image: redis
+  #   container_name: redis
+  #   ports:
+  #     - "6379:6379"
 
   adminer:
     container_name: adminer
