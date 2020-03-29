@@ -1,4 +1,4 @@
-package com.ahmed.book_ws.backend.model;
+package com.ahmed.book_ws.model;
 
 public class BookInfo {
     private  String bookTitle;

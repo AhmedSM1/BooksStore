@@ -1,4 +1,5 @@
-package com.ahmed.book_ws.backend.model;
+package com.ahmed.book_ws.model;
+
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
