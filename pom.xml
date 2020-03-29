@@ -4,7 +4,7 @@
   <modules>
 
     <module>order_ws</module>
-    <module>common</module>
+   
     <module>book_ws</module>
   </modules>
   <parent>

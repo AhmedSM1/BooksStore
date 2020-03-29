@@ -13,10 +13,6 @@
      <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.ahmed</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+       
     </dependencies>
 </project>
