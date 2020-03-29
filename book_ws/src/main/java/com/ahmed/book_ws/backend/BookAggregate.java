@@ -3,10 +3,10 @@ package com.ahmed.book_ws.backend;
 import com.ahmed.book_ws.backend.command.BookCommand;
 import com.ahmed.book_ws.backend.command.CreateBookCommand;
 import com.ahmed.book_ws.backend.command.DeleteBookCommand;
-
+import com.ahmed.book_ws.model.BookInfo;
 import com.ahmed.common.book.CreateBookEvent;
 import com.ahmed.common.book.DeleteBookEvent;
-import com.ahmed.common.book.model.BookInfo;
+
 
 import io.eventuate.*;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;

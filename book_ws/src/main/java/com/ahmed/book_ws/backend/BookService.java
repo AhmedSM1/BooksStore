@@ -1,7 +1,7 @@
 package com.ahmed.book_ws.backend;
 
-import com.ahmed.common.book.model.Book;
-import com.ahmed.common.book.model.BookInfo;
+import com.ahmed.book_ws.model.Book;
+import com.ahmed.book_ws.model.BookInfo;
 
 import io.eventuate.EntityWithIdAndVersion;
 
