@@ -7,10 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
-        <module name="book_ws" />
-        <module name="order_ws" />
-        <module name="books_ws_common" />
         <module name="order_ws_common" />
+        <module name="order_ws" />
+        <module name="book_ws" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

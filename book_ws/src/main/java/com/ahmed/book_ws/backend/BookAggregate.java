@@ -2,6 +2,7 @@ package com.ahmed.book_ws.backend;
 
 import com.ahmed.book_ws.backend.command.BookCommand;
 import com.ahmed.book_ws.backend.command.CreateBookCommand;
+import com.ahmed.book_ws.backend.command.DeleteBookCommand;
 import com.ahmed.book_ws.backend.model.BookInfo;
 import com.ahmed.common.book.CreateBookEvent;
 import io.eventuate.*;
@@ -14,10 +15,18 @@ public class BookAggregate extends ReflectiveMutableCommandProcessingAggregate<B
                BookInfo bookInfo;
                Boolean deleted;
 
+
    public List<Event> proccess(CreateBookCommand cmd){
        if (this.deleted) {
            return Collections.emptyList();
        }
-       return EventUtil.events(new CreateBookEvent();
+       return EventUtil.events(new CreateBookEvent());
+   }
+
+   public  List<Event> proccess(DeleteBookCommand cmd){
+       if (this.deleted) {
+           return Collections.emptyList();
+       }
+       return EventUtil.events();
    }
 }
