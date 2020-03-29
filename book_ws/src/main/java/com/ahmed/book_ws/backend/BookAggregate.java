@@ -23,7 +23,7 @@ public class BookAggregate extends ReflectiveMutableCommandProcessingAggregate<B
        if (this.deleted) {
            return Collections.emptyList();
        }
-       return EventUtil.events(new CreateBookEvent());
+       return EventUtil.events(new CreateBookEvent(cmd.getInfo()));
    }
 
    public  List<Event> proccess(DeleteBookCommand cmd){
