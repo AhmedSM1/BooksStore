@@ -1,4 +1,4 @@
-package com.ahmed.common.Order;
+package com.ahmed.order_ws.backend.events;
 
 import io.eventuate.Event;
 

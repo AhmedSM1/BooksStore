@@ -66,8 +66,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.2.5.RELEASE" level="project" />
-    <orderEntry type="module" module-name="common" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
+    <orderEntry type="library" name="Maven: com.ahmed:common:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.2.6.RELEASE" level="project" />

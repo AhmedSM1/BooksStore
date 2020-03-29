@@ -1,4 +1,4 @@
-package com.ahmed.common.book;
+package com.ahmed.book_ws.backend.events;
 
 import io.eventuate.Event;
 import io.eventuate.EventEntity;

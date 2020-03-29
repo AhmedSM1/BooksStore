@@ -4,8 +4,8 @@ import com.ahmed.book_ws.backend.command.BookCommand;
 import com.ahmed.book_ws.backend.command.CreateBookCommand;
 import com.ahmed.book_ws.backend.command.DeleteBookCommand;
 import com.ahmed.book_ws.model.BookInfo;
-import com.ahmed.common.book.CreateBookEvent;
-import com.ahmed.common.book.DeleteBookEvent;
+import com.ahmed.book_ws.backend.events.CreateBookEvent;
+import com.ahmed.book_ws.backend.events.DeleteBookEvent;
 
 
 import io.eventuate.*;
