@@ -1,17 +1,33 @@
 package com.ahmed.book_ws.backend;
 
-import com.ahmed.book_ws.model.Book;
-import com.ahmed.book_ws.model.BookInfo;
-
+import com.ahmed.book_ws.backend.command.BookCommand;
+import com.ahmed.book_ws.backend.command.CreateBookCommand;
+import com.ahmed.book_ws.backend.command.DeleteBookCommand;
+import com.ahmed.book_ws.backend.command.UpdateBookCommand;
+import com.ahmed.common.BookInfo;
+import io.eventuate.AggregateRepository;
 import io.eventuate.EntityWithIdAndVersion;
+import org.springframework.stereotype.Service;
 
-public interface BookService {
+import java.util.concurrent.CompletableFuture;
+@Service
+public class BookService {
+    private final AggregateRepository<BookAggregate, BookCommand> repository;
 
-    EntityWithIdAndVersion<Book> createBook(BookInfo  info);
+    public BookService(AggregateRepository<BookAggregate, BookCommand> repository) {
+        this.repository = repository;
+    }
 
-    EntityWithIdAndVersion<Book> findById(String bookid);
+    public CompletableFuture<EntityWithIdAndVersion<BookAggregate>> createBook(BookInfo info) {
+        return repository.save(new CreateBookCommand(info));
+    }
 
-    EntityWithIdAndVersion<Book> findByBookTitle(String bookid);
+    public CompletableFuture<EntityWithIdAndVersion<BookAggregate>> updateBook(Long id , BookInfo info) {
+        return repository.save(new UpdateBookCommand(id, info));
+    }
 
-    
+
+    public CompletableFuture<EntityWithIdAndVersion<BookAggregate>> deleteBook(String id) {
+        return repository.update(id, new DeleteBookCommand());
+    }
 }

@@ -1,6 +1,18 @@
 package com.ahmed.order_ws.backend.service;
 
 
+import com.ahmed.order_ws.backend.model.Order;
+import io.eventuate.EntityWithIdAndVersion;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+@Validated
 public interface OrderService{
-    String createOrder();
+    EntityWithIdAndVersion<Order> create(@NotNull(message = "Order must contain books") @Valid Order order);
+
+    void update(@NotNull(message = "Order must contain books") @Valid Order order);
+
+    Iterable<Order> getAllOrders();
 }

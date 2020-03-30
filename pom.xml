@@ -6,6 +6,8 @@
     <module>order_ws</module>
    
     <module>book_ws</module>
+    <module>common</module>
+      <module>customer</module>
   </modules>
   <parent>
     <groupId>org.springframework.boot</groupId>

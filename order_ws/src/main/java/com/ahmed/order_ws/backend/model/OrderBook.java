@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.ahmed.common.Book;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -19,33 +20,40 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "order_item")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-
 public class OrderBook {
 
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ORDER_ITEM_ID", updatable = false, nullable = false)
-    private Long orderItemId;
-    
-    @ManyToOne
-    @JoinColumn(name = "ORDER_ID")
+    @EmbeddedId
     @JsonIgnore
-    private Order order;
-    
-    @Column(name = "BOOK_ID", nullable = false)
-    private String bookId;
-    
-    @Column(name = "QUANTITY", nullable = false)
-    private int quantity;
-    
-    @Column(name = "ORDER_BOOK_PRICE", nullable = false)
-    private double orderBookPrice;
-    
+    private OrderBookPK primaryKey;
 
-   
+    @Column(nullable = false)
+    private Integer quantity;
+
+    public OrderBook(Order order, Book book, Integer quantity) {
+        this.primaryKey = new OrderBookPK();
+        primaryKey.setBook(book);
+        primaryKey.setOrder(order);
+        this.quantity = quantity;
+    }
+
+    public OrderBook() {
+        super();
+    }
+
+    @JsonIgnore
+    public OrderBookPK getPrimaryKey() {
+        return primaryKey;
+    }
+
+    public void setPrimaryKey(OrderBookPK primaryKey) {
+        this.primaryKey = primaryKey;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }

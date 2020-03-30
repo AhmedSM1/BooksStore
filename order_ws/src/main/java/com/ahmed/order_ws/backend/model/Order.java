@@ -4,63 +4,68 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.PreRemove;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+
 @Entity
 @Table(name = "order")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="orderItems")
 public class Order {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ORDER_ID", updatable = false, nullable = false)
-    private Long orderID;
 
-    
-    @JsonFormat(pattern = "dd/MM/yyyy") 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateCreated;
 
-    
+    @OneToMany(mappedBy = "primaryKey.order")
     @Valid
-    private List<OrderItem> ordersItems = new ArrayList<>();
+    private List<OrderBook> orderItems = new ArrayList<>();
 
-    @Column(name = "TOTAL_ORDER_PRICE", nullable = false)
-    private double totalOrderPrice;
-
-    
-    public void dismissChild(OrderItem item) {
-        this.ordersItems.remove(item);
+    public Long getId() {
+        return id;
     }
 
-    @PreRemove
-    public void dismissChild() {
-        this.
-
-
-
-        this.cartItem.forEach(CartItem::dismissParent); // SYNCHRONIZING THE OTHER SIDE OF RELATIONSHIP
-        this.cartItem.clear();
+    public void setId(Long id) {
+        this.id = id;
     }
 
-   
+    public LocalDate getDateCreated() {
+        return dateCreated;
+    }
 
-    
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public List<OrderBook> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderBook> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    @Transient
+    public Double getTotalPrice() {
+        double sum = 0;
+        List<OrderBook> orderItems = getOrderItems();
+        for (OrderBook item : orderItems) {
+            sum += item.getQuantity();
+        }
+
+        return sum;
+    }
 }

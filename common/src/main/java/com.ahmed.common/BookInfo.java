@@ -1,10 +1,19 @@
-package com.ahmed.book_ws.backend.model;
+package com.ahmed.common;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BookInfo {
-    private  String bookTitle;
-    private  String description;
+    private String bookTitle;
+
+    private String description;
+
     private double price;
-    private BookCategory bookcatagory;
+
     private int availableItemCount;
 
     public String getBookTitle() {
@@ -29,14 +38,6 @@ public class BookInfo {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public BookCategory getBookcatagory() {
-        return bookcatagory;
-    }
-
-    public void setBookcatagory(BookCategory bookcatagory) {
-        this.bookcatagory = bookcatagory;
     }
 
     public int getAvailableItemCount() {

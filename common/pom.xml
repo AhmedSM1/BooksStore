@@ -9,16 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>order_ws</artifactId>
-     <packaging>jar</packaging>
+    <artifactId>common</artifactId>
 
-    <dependencies>
 
-        <dependency>
-            <groupId>com.ahmed</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
 </project>
