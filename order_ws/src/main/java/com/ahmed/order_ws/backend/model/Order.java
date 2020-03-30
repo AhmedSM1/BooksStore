@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
 import javax.validation.Valid;
 
@@ -38,7 +39,6 @@ public class Order {
     private LocalDate dateCreated;
 
     
-    @OneToMany(mappedBy = "primaryKey.cart")
     @Valid
     private List<OrderItem> ordersItems = new ArrayList<>();
 
@@ -46,6 +46,19 @@ public class Order {
     private double totalOrderPrice;
 
     
+    public void dismissChild(OrderItem item) {
+        this.ordersItems.remove(item);
+    }
+
+    @PreRemove
+    public void dismissChild() {
+        this.
+
+
+
+        this.cartItem.forEach(CartItem::dismissParent); // SYNCHRONIZING THE OTHER SIDE OF RELATIONSHIP
+        this.cartItem.clear();
+    }
 
    
 

@@ -1,8 +1,8 @@
 package com.ahmed.book_ws.backend.events;
 
-import com.ahmed.book_ws.model.BookInfo;
+import com.ahmed.book_ws.backend.model.BookInfo;
 
-public class UpdateBookEvent implements BookEvent{
+public class UpdateBookEvent implements BookEvent {
 
     BookInfo info;
 

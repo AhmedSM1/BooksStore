@@ -1,6 +1,6 @@
 package com.ahmed.book_ws.backend.command;
 
-import com.ahmed.book_ws.model.BookInfo;
+import com.ahmed.book_ws.backend.model.BookInfo;
 
 public class UpdateBookCommand implements BookCommand {
     private String id;

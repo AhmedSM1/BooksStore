@@ -1,4 +1,4 @@
-package com.ahmed.book_ws.model;
+package com.ahmed.book_ws.backend.model;
 
 
 import javax.persistence.Entity;

@@ -1,6 +1,6 @@
-package com.ahmed.book_ws.backend;
+package com.ahmed.book_ws.backend.model;
 
-import com.ahmed.book_ws.model.Book;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

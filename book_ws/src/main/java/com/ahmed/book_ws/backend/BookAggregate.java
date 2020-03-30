@@ -4,10 +4,11 @@ import com.ahmed.book_ws.backend.command.BookCommand;
 import com.ahmed.book_ws.backend.command.CreateBookCommand;
 import com.ahmed.book_ws.backend.command.DeleteBookCommand;
 import com.ahmed.book_ws.backend.command.UpdateBookCommand;
-import com.ahmed.book_ws.model.BookInfo;
+
 import com.ahmed.book_ws.backend.events.CreateBookEvent;
 import com.ahmed.book_ws.backend.events.DeleteBookEvent;
 import com.ahmed.book_ws.backend.events.UpdateBookEvent;
+import com.ahmed.book_ws.backend.model.BookInfo;
 
 import io.eventuate.*;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;
