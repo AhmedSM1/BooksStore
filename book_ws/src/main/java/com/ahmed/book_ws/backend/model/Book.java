@@ -1,37 +1,39 @@
 package com.ahmed.book_ws.backend.model;
 
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
+
+
 
 @Entity
-//@Table(name = "books")
+@Table(name = "books")
 public class Book  {
     
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-//    @Column(name = "BOOK_ID", updatable = false, nullable = false)
-    private String bookId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "BOOK_ID", updatable = false, nullable = false)
+    private Long bookId;
 
-//    @Column(name = "BOOk_TITLE", nullable = false)
+    @Column(name = "BOOk_TITLE", nullable = false)
     private String bookTitle;
 
-//    @Column(name = "BOOK_DESCRIPTION")
+    @Column(name = "BOOK_DESCRIPTION")
     private String description;
 
     private double price;
 
- //   @Column(name = "BOOK_CATEGORY")
+   @Column(name = "BOOK_CATEGORY")
     @Enumerated(EnumType.STRING)
     private BookCategory bookcatagory;
 
-//    @Column(name = "available_item_count")
+   @Column(name = "available_item_count")
     private int availableItemCount;
 
     public Book(BookInfo info) {
@@ -45,7 +47,7 @@ public class Book  {
     public Book() {
     }
 
-    public Book(String bookId,String bookTitle,String description,double price,BookCategory bookcatagory,int availableItemCount) {
+    public Book(Long bookId,String bookTitle,String description,double price,BookCategory bookcatagory,int availableItemCount) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
         this.description = description;
@@ -53,11 +55,11 @@ public class Book  {
         this.bookcatagory = bookcatagory;
         this.availableItemCount = availableItemCount;
     }
-    public String getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
