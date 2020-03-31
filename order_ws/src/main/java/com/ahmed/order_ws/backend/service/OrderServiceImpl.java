@@ -1,6 +1,6 @@
 package com.ahmed.order_ws.backend.service;
 
-import com.ahmed.order_ws.backend.model.Order;
+import com.ahmed.common.order.Order;
 import com.ahmed.order_ws.backend.model.OrderItemRepo;
 import com.ahmed.order_ws.backend.model.OrderRepo;
 

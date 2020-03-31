@@ -1,7 +1,7 @@
 package com.ahmed.common.events;
 
 
-import com.ahmed.common.BookInfo;
+import com.ahmed.common.books.BookInfo;
 
 public class BookEditedEvent implements BookEvent {
    private BookInfo info;

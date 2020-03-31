@@ -1,12 +1,7 @@
 package com.ahmed.book_ws.backend.command;
 
 
-import com.ahmed.common.BookInfo;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-
+import com.ahmed.common.books.BookInfo;
 
 
 public class CreateBookCommand implements BookCommand {

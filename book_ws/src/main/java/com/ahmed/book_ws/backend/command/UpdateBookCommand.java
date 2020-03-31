@@ -1,17 +1,21 @@
 package com.ahmed.book_ws.backend.command;
 
-import com.ahmed.common.BookInfo;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.ahmed.common.books.BookInfo;
 
-@Data
-@AllArgsConstructor
 public class UpdateBookCommand implements BookCommand {
      BookInfo info;
-     Long id;
-    public UpdateBookCommand(Long id , BookInfo info) {
+     String id;
+    public UpdateBookCommand(String id , BookInfo info) {
         this.id = id;
         this.info = info;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public BookInfo getInfo() {

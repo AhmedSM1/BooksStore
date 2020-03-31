@@ -1,6 +1,6 @@
 package com.ahmed.order_ws.backend.service;
 
-import com.ahmed.order_ws.backend.model.OrderBook;
+import com.ahmed.common.order.OrderBook;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
