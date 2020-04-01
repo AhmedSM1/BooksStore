@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @ComponentScan
-@Import({BackendConfiguration.class, WebConfig.class})
+@Import(BackendConfiguration.class)
 public class BookWebConfig {
 }

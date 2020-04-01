@@ -1,15 +1,13 @@
-package com.ahmed.book_ws.backend.Service;
+package com.ahmed.books_ws_view.backend;
 
-import java.io.Serializable;
-
-public class BookDTO implements Serializable {
+public class BookInfo {
     private String bookId;
     private String bookTitle;
     private String description;
     private double price;
     private int availableItemCount;
 
-    public BookDTO(String bookId, String bookTitle, String description, double price, int availableItemCount) {
+    public BookInfo(String bookId, String bookTitle, String description, double price, int availableItemCount) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
         this.description = description;

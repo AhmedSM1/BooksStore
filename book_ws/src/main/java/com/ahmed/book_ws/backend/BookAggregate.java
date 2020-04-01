@@ -6,65 +6,60 @@ import com.ahmed.book_ws.backend.command.CreateBookCommand;
 import com.ahmed.book_ws.backend.command.DeleteBookCommand;
 import com.ahmed.book_ws.backend.command.UpdateBookCommand;
 
-import com.ahmed.book_ws.backend.events.BookAddedEvent;
-import com.ahmed.book_ws.backend.events.BookEditedEvent;
-import com.ahmed.book_ws.backend.events.BookRemovedEvent;
+import com.ahmed.common_backend.books.events.BookAddedEvent;
+import com.ahmed.common_backend.books.events.BookEditedEvent;
+import com.ahmed.common_backend.books.events.BookRemovedEvent;
 import io.eventuate.*;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookAggregate extends ReflectiveMutableCommandProcessingAggregate<BookAggregate, BookCommand> {
-    private BookDTO dto;
-    private boolean deleted = false;
 
     private static Logger log = LoggerFactory.getLogger(BookAggregate.class);
 
-   //process methods takes a command and return sequence of events
-   public List<Event> proccess(CreateBookCommand cmd){
-       if (!this.deleted) {
-           log.info("Calling BookAggregate.process for CreateBookCommand : "+ cmd);
-           return EventUtil.events(new BookAddedEvent(cmd.getDto()));
-       }
-       return new ArrayList<>();
-   }
-   public  List<Event> proccess(UpdateBookCommand cmd){
-    if (!this.deleted) {
-        return EventUtil.events(new BookEditedEvent(cmd.getBookDTO()));
+
+
+    //process methods takes a command and return sequence of events
+    public List<Event> process(CreateBookCommand cmd){
+            log.info("Calling BookAggregate.process for CreateBookCommand : "+ cmd);
+            return EventUtil.events(new BookAddedEvent(
+                    cmd.getDto().getBookId(),
+                    cmd.getDto().getBookTitle(),
+                    cmd.getDto().getAvailableItemCount(),
+                    cmd.getDto().getPrice()));
     }
-       return new ArrayList<>();
-}
+    public  List<Event> process(UpdateBookCommand cmd){
+        log.info("Calling BookAggregate.process for UpdateBookCommand : "+ cmd);
+            return EventUtil.events(new BookEditedEvent(
+                    cmd.getBookDTO().getBookId(),
+                    cmd.getBookDTO().getBookTitle(),
+                    cmd.getBookDTO().getAvailableItemCount(),
+                    cmd.getBookDTO().getPrice(),
+                    cmd.getBookDTO().getDescription()));
 
-   public  List<Event> proccess(DeleteBookCommand cmd){
-       if (!this.deleted) {
-           return EventUtil.events(new BookRemovedEvent());
-       }
-       return new ArrayList<>();
-   }
+    }
+    public  List<Event> process(DeleteBookCommand cmd){
+            return EventUtil.events(new BookRemovedEvent(cmd.getBookId()));
+        }
 
-   //apply method takes an event and returns updated aggregate
+    //apply method takes an event and returns updated aggregate
     public void apply(BookAddedEvent event) {
         log.info("Calling BoardAggregate.APPLY for BookAddedEvent : {}", event);
-
-
-       this.dto = event.getDto();
     }
 
     public void apply(BookEditedEvent event) {
         log.info("Calling BoardAggregate.APPLY for BookEditedEvent : {}", event);
 
-        this.dto = event.getDto();
     }
 
     public void apply(BookRemovedEvent event) {
         log.info("Calling BoardAggregate.APPLY for BookRemovedEvent : {}", event);
-        this.deleted = true;
+
     }
 
-    public BookDTO getDto() {
-        return dto;
-    }
+
+
 }

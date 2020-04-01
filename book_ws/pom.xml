@@ -33,7 +33,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.ahmed</groupId>
+            <artifactId>common_backend</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>com.ahmed</groupId>
             <artifactId>common</artifactId>

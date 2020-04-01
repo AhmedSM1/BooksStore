@@ -1,4 +1,4 @@
-package com.ahmed.book_ws.backend.events;
+package com.ahmed.common_backend.books.events;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

@@ -1,4 +1,4 @@
-package com.ahmed.book_ws.backend.events;
+package com.ahmed.common_backend.books.events;
 
 
 
