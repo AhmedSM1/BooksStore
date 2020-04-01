@@ -5,7 +5,6 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
 import com.ahmed.common.books.Book;
-import com.ahmed.common.order.Order;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

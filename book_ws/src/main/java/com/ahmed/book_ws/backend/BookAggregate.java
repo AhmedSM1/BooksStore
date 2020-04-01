@@ -1,14 +1,14 @@
 package com.ahmed.book_ws.backend;
 
+import com.ahmed.book_ws.backend.Service.BookDTO;
 import com.ahmed.book_ws.backend.command.BookCommand;
 import com.ahmed.book_ws.backend.command.CreateBookCommand;
 import com.ahmed.book_ws.backend.command.DeleteBookCommand;
 import com.ahmed.book_ws.backend.command.UpdateBookCommand;
 
-import com.ahmed.common.books.BookInfo;
-import com.ahmed.common.events.BookAddedEvent;
-import com.ahmed.common.events.BookEditedEvent;
-import com.ahmed.common.events.BookRemovedEvent;
+import com.ahmed.book_ws.backend.events.BookAddedEvent;
+import com.ahmed.book_ws.backend.events.BookEditedEvent;
+import com.ahmed.book_ws.backend.events.BookRemovedEvent;
 import io.eventuate.*;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookAggregate extends ReflectiveMutableCommandProcessingAggregate<BookAggregate, BookCommand> {
-    private BookInfo bookInfo;
+    private BookDTO dto;
     private boolean deleted = false;
 
     private static Logger log = LoggerFactory.getLogger(BookAggregate.class);
@@ -27,13 +27,13 @@ public class BookAggregate extends ReflectiveMutableCommandProcessingAggregate<B
    public List<Event> proccess(CreateBookCommand cmd){
        if (!this.deleted) {
            log.info("Calling BookAggregate.process for CreateBookCommand : "+ cmd);
-           return EventUtil.events(new BookAddedEvent(cmd.getInfo()));
+           return EventUtil.events(new BookAddedEvent(cmd.getDto()));
        }
        return new ArrayList<>();
    }
    public  List<Event> proccess(UpdateBookCommand cmd){
     if (!this.deleted) {
-        return EventUtil.events(new BookEditedEvent(cmd.getInfo()));
+        return EventUtil.events(new BookEditedEvent(cmd.getBookDTO()));
     }
        return new ArrayList<>();
 }
@@ -50,13 +50,13 @@ public class BookAggregate extends ReflectiveMutableCommandProcessingAggregate<B
         log.info("Calling BoardAggregate.APPLY for BookAddedEvent : {}", event);
 
 
-       this.bookInfo = event.getInfo();
+       this.dto = event.getDto();
     }
 
     public void apply(BookEditedEvent event) {
         log.info("Calling BoardAggregate.APPLY for BookEditedEvent : {}", event);
 
-        this.bookInfo = event.getInfo();
+        this.dto = event.getDto();
     }
 
     public void apply(BookRemovedEvent event) {
@@ -64,7 +64,7 @@ public class BookAggregate extends ReflectiveMutableCommandProcessingAggregate<B
         this.deleted = true;
     }
 
-    public BookInfo getBookInfo() {
-        return bookInfo;
+    public BookDTO getDto() {
+        return dto;
     }
 }

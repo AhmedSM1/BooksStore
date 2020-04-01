@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/customer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/discovery_ws/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/feign_client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/order_ws/src/main/java" charset="UTF-8" />
   </component>
 </project>

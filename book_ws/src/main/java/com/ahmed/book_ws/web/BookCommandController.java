@@ -1,12 +1,13 @@
 package com.ahmed.book_ws.web;
 
 
+import com.ahmed.book_ws.backend.Model.UpdateBookRequest;
 import com.ahmed.book_ws.backend.BookAggregate;
-import com.ahmed.book_ws.backend.BookRepo;
-import com.ahmed.book_ws.backend.BookService;
-import com.ahmed.common.books.Book;
-import com.ahmed.common.books.BookInfo;
-import com.ahmed.common.books.BookResponse;
+import com.ahmed.book_ws.backend.Model.BookRepo;
+import com.ahmed.book_ws.backend.Service.BookDTO;
+import com.ahmed.book_ws.backend.Service.BookService;
+import com.ahmed.book_ws.backend.Model.BookRequestModel;
+import com.ahmed.book_ws.backend.Model.BookResponse;
 import io.eventuate.EntityWithIdAndVersion;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -32,27 +33,43 @@ public class BookCommandController {
 
     @PostMapping(    consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
                      produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public CompletableFuture<BookResponse> saveBook(@Validated @RequestBody BookInfo bookInfo){
+    public CompletableFuture<BookResponse> saveBook(@Validated @RequestBody BookRequestModel bookInfo){
         log.debug("BookController.saveBook "+ bookInfo.getBookTitle());
-
-        //persist to DB
         ModelMapper modelMapper = new ModelMapper();
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        Book book = modelMapper.map(bookInfo,Book.class);
-        repo.save(book);
-        log.debug("Book id is "+book.getBookId());
 
-       return bookService.createBook(bookInfo).thenApply(this ::makeBookResponse);
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        BookDTO dto = modelMapper.map(bookInfo,BookDTO.class);
+
+        return bookService.createBook(dto).thenApply(this ::makeBookResponse);
 
     }
 
-   
+    @DeleteMapping("/{bookId}")
+    public CompletableFuture<BookResponse> deleteBook(@Validated @PathVariable String bookId){
+        log.debug("BookController.deleteBook "+ bookId);
+
+        return bookService.deleteBook(bookId).thenApply(this::makeBookResponse);
+    }
+   @PutMapping(  consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
+                 produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+   public CompletableFuture<BookResponse> updateBook(@Validated @RequestBody UpdateBookRequest updateBookRequest){
+       log.debug("BookController.updateBook "+ updateBookRequest.getBookTitle());
+
+       ModelMapper modelMapper = new ModelMapper();
+
+       modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+       BookDTO dto = modelMapper.map(updateBookRequest,BookDTO.class);
+       return bookService.updateBook(dto).thenApply(this::makeBookResponse);
+   }
+
 
     private BookResponse makeBookResponse(EntityWithIdAndVersion<BookAggregate> e) {
         return new BookResponse(e.getEntityId(),
-                e.getAggregate().getBookInfo().getBookTitle(),
-                e.getAggregate().getBookInfo().getDescription(),
-                e.getAggregate().getBookInfo().getPrice(),
-                e.getAggregate().getBookInfo().getAvailableItemCount());
+                e.getAggregate().getDto().getBookTitle(),
+                e.getAggregate().getDto().getDescription(),
+                e.getAggregate().getDto().getPrice(),
+                e.getAggregate().getDto().getAvailableItemCount());
     }
 }

@@ -10,6 +10,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="Entities" />
+          <factory-entry name="entityManagerFactory" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
@@ -74,6 +75,25 @@
     <orderEntry type="library" name="Maven: org.springframework.hateoas:spring-hateoas:1.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.plugin:spring-plugin-core:2.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.atteo:evo-inflector:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.client.java:eventuate-client-java-spring:0.20.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.client.java:eventuate-client-java-event-handling:0.20.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.local.java:eventuate-local-java-jdbc:0.30.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.local.java:eventuate-local-java-common:0.30.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.local.java:eventuate-local-java-kafka:0.30.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.kafka:kafka-clients:2.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.luben:zstd-jni:1.4.0-1" level="project" />
+    <orderEntry type="library" name="Maven: org.lz4:lz4-java:1.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.xerial.snappy:snappy-java:1.1.7.3" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:5.2.3.Final" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.local.java:eventuate-local-java-common-broker:0.30.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.client.java:eventuate-client-java-common-impl:0.20.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.2" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.client.java:eventuate-client-java-jdbc-common:0.20.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.eventuate.client.java:eventuate-client-java-spring-common:0.20.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.2.10" level="project" />
+    <orderEntry type="library" name="Maven: com.microsoft.sqlserver:mssql-jdbc:7.4.1.jre8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.2.5.RELEASE" level="project" />
@@ -87,10 +107,10 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.2.4.RELEASE" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.yaml:snakeyaml:1.25" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.eventuate.local.java:eventuate-local-java-jdbc-autoconfigure:0.30.4.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.eventuate.client.java:eventuate-client-java-spring-autoconfigure:0.20.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-json:2.2.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.2" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.10.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-tomcat:2.2.5.RELEASE" level="project" />

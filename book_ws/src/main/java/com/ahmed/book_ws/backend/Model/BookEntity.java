@@ -1,24 +1,28 @@
-package com.ahmed.common.books;
+package com.ahmed.book_ws.backend.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Book {
+@Table(name = "books")
+public class BookEntity implements Serializable {
         @Id
+        @GeneratedValue
         private String bookId;
 
+       @Column(nullable = false, length = 25)
         private String bookTitle;
 
+       @Column(nullable = false, length = 50)
         private String description;
 
+       @Column(nullable = false)
         private double price;
 
+       @Column(nullable = false)
         private int availableItemCount;
 
-   public Book(String bookId,String bookTitle,String description,double price,int availableItemCount){
+   public BookEntity(String bookId, String bookTitle, String description, double price, int availableItemCount){
        this.bookId = bookId;
        this.bookTitle = bookTitle;
        this.description = description;
@@ -26,7 +30,7 @@ public class Book {
        this.availableItemCount = availableItemCount;
    }
 
-    public Book() {
+    public BookEntity() {
     }
 
     public String getBookId() {

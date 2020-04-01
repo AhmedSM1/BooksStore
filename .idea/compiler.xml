@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Zuul_api_gateway" />
+        <module name="feign_client" />
         <module name="common" />
         <module name="customer" />
         <module name="book_ws" />
@@ -21,6 +22,7 @@
       <module name="customer" target="1.8" />
       <module name="discovery_service" target="1.8" />
       <module name="discovery_ws" target="1.8" />
+      <module name="feign_client" target="1.8" />
       <module name="order_ws" target="1.8" />
       <module name="Zuul_api_gateway" target="1.8" />
     </bytecodeTargetLevel>
@@ -33,6 +35,7 @@
       <module name="customer" options="-parameters" />
       <module name="discovery_service" options="-parameters" />
       <module name="discovery_ws" options="-parameters" />
+      <module name="feign_client" options="-parameters" />
       <module name="order_ws" options="-parameters" />
     </option>
   </component>

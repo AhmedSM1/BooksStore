@@ -1,29 +1,27 @@
 package com.ahmed.book_ws.backend.command;
 
-import com.ahmed.common.books.BookInfo;
+import com.ahmed.book_ws.backend.Service.BookDTO;
 
 public class UpdateBookCommand implements BookCommand {
-     BookInfo info;
-     String id;
-    public UpdateBookCommand(String id , BookInfo info) {
-        this.id = id;
-        this.info = info;
+     BookDTO bookDTO;
+
+    public UpdateBookCommand(BookDTO bookDTO) {
+        this.bookDTO = bookDTO;
     }
 
-    public String getId() {
-        return id;
+    public BookDTO getBookDTO() {
+        return bookDTO;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setBookDTO(BookDTO bookDTO) {
+        this.bookDTO = bookDTO;
     }
 
-    public BookInfo getInfo() {
-        return info;
-    }
-
-    public void setInfo(BookInfo info) {
-        this.info = info;
+    @Override
+    public String toString() {
+        return "UpdateBookCommand{" +
+                "bookDTO=" + bookDTO +
+                '}';
     }
 }
 

@@ -11,7 +11,16 @@
 
     <artifactId>book_ws</artifactId>
     <packaging>jar</packaging>
-
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
+    <properties>
+        <eventuateClientVersion>LATEST_VERSION</eventuateClientVersion>
+        <eventuateLocalVersion>LATEST_VERSION</eventuateLocalVersion>
+    </properties>
     <dependencies>
 
         <dependency>
@@ -29,6 +38,18 @@
             <groupId>com.ahmed</groupId>
             <artifactId>common</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.client.java</groupId>
+            <artifactId>eventuate-client-java-spring</artifactId>
+            <version>0.20.1.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.local.java</groupId>
+            <artifactId>eventuate-local-java-jdbc</artifactId>
+            <version>0.30.4.RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

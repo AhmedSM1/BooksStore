@@ -1,7 +1,9 @@
-package com.ahmed.common.books;
+package com.ahmed.book_ws.backend.Model;
 
+public class UpdateBookRequest {
 
-public class BookInfo {
+    private String bookId;
+
     private String bookTitle;
 
     private String description;
@@ -10,11 +12,20 @@ public class BookInfo {
 
     private int availableItemCount;
 
-    public BookInfo(String bookTitle, String description, double price, int availableItemCount) {
+    public UpdateBookRequest(String bookId, String bookTitle, String description, double price, int availableItemCount) {
+        this.bookId = bookId;
         this.bookTitle = bookTitle;
         this.description = description;
         this.price = price;
         this.availableItemCount = availableItemCount;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
     public String getBookTitle() {

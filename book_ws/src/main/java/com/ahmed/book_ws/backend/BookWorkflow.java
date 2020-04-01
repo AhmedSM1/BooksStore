@@ -1,35 +1,58 @@
 package com.ahmed.book_ws.backend;
 
 
-import com.ahmed.common.books.BookInfo;
-import com.ahmed.common.events.BookAddedEvent;
+import com.ahmed.book_ws.backend.Model.BookRequestModel;
+import com.ahmed.book_ws.backend.Service.BookDTO;
+import com.ahmed.book_ws.backend.command.CreateBookCommand;
+import com.ahmed.book_ws.backend.command.DeleteBookCommand;
+import com.ahmed.book_ws.backend.command.UpdateBookCommand;
+import com.ahmed.book_ws.backend.events.BookAddedEvent;
 
 
-import io.eventuate.EventHandlerContext;
-import io.eventuate.EventHandlerMethod;
-import io.eventuate.EventSubscriber;
+import com.ahmed.book_ws.backend.events.BookEditedEvent;
+import com.ahmed.book_ws.backend.events.BookRemovedEvent;
+import io.eventuate.*;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@EventSubscriber(id = "bookEventHandlers")
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+
+@EventSubscriber(id = "BooksCommandSideEventHandlers")
 public class BookWorkflow {
     private static Logger log = LoggerFactory.getLogger(BookWorkflow.class);
 
    @EventHandlerMethod
-    public void addBook(EventHandlerContext<BookAddedEvent> eventhandler){
+    public CompletableFuture<EntityWithIdAndVersion<BookAggregate>> addBook(EventHandlerContext<BookAddedEvent> eventhandler){
        //getting the event
        BookAddedEvent bookAddedEvent = eventhandler.getEvent();
+
+       Optional<String> entityId = Optional.ofNullable( eventhandler.getEntityId()).filter(s -> !s.isEmpty());
+      log.debug("entity id  is "+entityId);
+
+      BookDTO dto = eventhandler.getEvent().getDto();
        log.debug("Event is "+bookAddedEvent);
 
-       String bookTitle = bookAddedEvent.getInfo().getBookTitle();
-       double price = bookAddedEvent.getInfo().getPrice();
-       String description = bookAddedEvent.getInfo().getDescription();
-       int  amoutAvalible = bookAddedEvent.getInfo().getAvailableItemCount();
-       String bookId = eventhandler.getEntityId();
-       log.debug("     book title is "+bookTitle+ "price: "+price+ " amount "+amoutAvalible+"   id is"+bookId);
+       log.debug("     book title is "+dto.getBookTitle()+ "price: "+dto.getPrice()+ " amount "+dto.getBookId()+"   id is"+dto.getBookId());
 
-       BookInfo info = new BookInfo(bookTitle,description,price,amoutAvalible);
+
+
+      return eventhandler.save(BookAggregate.class,  new CreateBookCommand(dto),entityId);
 
    }
+   @EventHandlerMethod
+   public CompletableFuture<EntityWithIdAndVersion<BookAggregate>> updateBook(EventHandlerContext<BookEditedEvent> eventhandler){
+      BookEditedEvent bookEditedEvent = eventhandler.getEvent();
+      BookDTO dto = eventhandler.getEvent().getDto();
+      return eventhandler.update(BookAggregate.class, dto.getBookId(), new UpdateBookCommand(dto));
 
+   }
+   @EventHandlerMethod
+   public CompletableFuture<EntityWithIdAndVersion<BookAggregate>> deleteBook(EventHandlerContext<BookRemovedEvent> ctx) {
+      String bookid = ctx.getEvent().getBookId();
+
+      return ctx.update(BookAggregate.class, bookid, new DeleteBookCommand(bookid));
+   }
 }

@@ -1,14 +1,13 @@
-package com.ahmed.book_ws.backend.command;
+package com.ahmed.book_ws.backend.events;
 
 
 import com.ahmed.book_ws.backend.Model.BookEntity;
 import com.ahmed.book_ws.backend.Service.BookDTO;
 
+public class BookAddedEvent implements BookEvent {
+private BookDTO dto;
 
-public class CreateBookCommand implements BookCommand {
-  private BookDTO dto;
-
-    public CreateBookCommand(BookDTO dto) {
+    public BookAddedEvent(BookDTO dto) {
         this.dto = dto;
     }
 

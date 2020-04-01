@@ -1,23 +1,13 @@
-package com.ahmed.common.books;
+package com.ahmed.book_ws.backend.Service;
 
-public class BookResponse {
+import java.io.Serializable;
+
+public class BookDTO implements Serializable {
     private String bookId;
-
     private String bookTitle;
-
     private String description;
-
     private double price;
-
     private int availableItemCount;
-
-    public BookResponse(String bookId,String bookTitle, String description, double price, int availableItemCount) {
-        this.bookId = bookId;
-        this.bookTitle = bookTitle;
-        this.description = description;
-        this.price = price;
-        this.availableItemCount = availableItemCount;
-    }
 
     public String getBookId() {
         return bookId;
