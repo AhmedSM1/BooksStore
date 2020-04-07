@@ -8,24 +8,18 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.ahmed</groupId>
     <artifactId>common</artifactId>
-    <packaging>jar</packaging>
+    <properties>
+        <eventuateLocalVersion>0.30.4.RELEASE</eventuateLocalVersion>
+        <eventuateClientVersion>0.20.1.RELEASE</eventuateClientVersion>
+
+    </properties>
 <dependencies>
-
-
-
-
-
     <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-rest</artifactId>
-        <scope>compile</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-jpa</artifactId>
-        <scope>compile</scope>
-    </dependency>
+    <groupId>io.eventuate.client.java</groupId>
+    <artifactId>eventuate-client-java-spring</artifactId>
+    <version>${eventuateClientVersion}</version>
+</dependency>
 </dependencies>
 </project>

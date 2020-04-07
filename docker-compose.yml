@@ -1,6 +1,5 @@
 version: "3"
 services:
-
   zookeeper:
     image: eventuateio/eventuateio-local-zookeeper
     container_name: zookeeper
@@ -22,7 +21,7 @@ services:
       - ZOOKEEPER_SERVERS=zookeeper:2181
 
   mysql:
-    image: mysql
+    image: eventuateio/eventuateio-local-mysql:0.20.1.RELEASE
     container_name: mysql
     ports:
       - 3306:3306
@@ -30,12 +29,6 @@ services:
       - MYSQL_ROOT_PASSWORD=rootpassword
       - MYSQL_USER=mysqluser
       - MYSQL_PASSWORD=mysqlpw
-
-  # mongo:
-  #   image: mongo:3.4.6
-  #   container_name: query_db
-  #   ports:
-  #     - "27017:27017"
 
   cdcservice:
     image: eventuateio/eventuateio-local-new-cdc-service
@@ -65,38 +58,6 @@ services:
         "cdcDbPassword":"rootpassword",
         "oldDebeziumDbHistoryTopicName":"none"}]
 
-  # configservice:
-  #   image: tawcd.stc.com.sa/supportservices/configservice:22
-  #   container_name: config_service
-  #   ports:
-  #     - "8888:8888"
-
-#  configservice:
-#      image: tawcd.stc.com.sa/config-prod
-#      container_name: config_service
-#      ports:
-#          - "8888:8888"
-#      environment:
-#          - TZ=Asia/Riyadh
-#          - SPRING_PROFILES_ACTIVE=prod
-
-  # crmuserservice:
-  #   image: tawcd.stc.com.sa/crmadapter-r0-02
-  #   container_name: crm_users_adapter
-  #   links:
-  #     - mysql
-  #   ports:
-  #     - "1445:1445"
-  #   environment:
-  #     - SPRING_PROFILES_ACTIVE=dev
-  #     - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-
-  # redis:
-  #   image: redis
-  #   container_name: redis
-  #   ports:
-  #     - "6379:6379"
-
   adminer:
     container_name: adminer
     image: adminer
@@ -104,166 +65,3 @@ services:
     ports:
       - 6002:8080
 
-#
-#  mongoui:
-#    container_name: adminMongo
-#    image: tawcd.stc.com.sa/mongoui_prod_02
-#    ports:
-#            - "6006:6003"
-#    volumes:
-#    - mongouiVolume:/var/lib/docker/volumes/mongouiVolume/_data
-#
-#volumes:
-#  mongouiVolume:
-#    driver: local
-#    #external: true
-
-#  bosdatabase:
-#    build: ./bosDatabase
-#    image: mysql
-#    container_name: bos_database
-#    #        volumes:
-#    #            - notificationDatabase:/var/lib/mysql
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=rootpassword
-#      - MYSQL_DATABASE=bosDB
-#    ports:
-#      - "3306:3306"
-#  authorizationservice:
-#      image: tawcd.stc.com.sa/auth-r6-01
-#      container_name: authorization_service
-#      ports:
-#          - "8181:8181"
-#      environment:
-#          - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-#          - SPRING_PROFILES_ACTIVE=dev
-#      links:
-#          - mysql
-#          - kafka
-#          - zookeeper
-#          - configservice
-
-#    complaintcmdservice:
-#        image: tawcd.stc.com.sa/cc-r6-03
-#        container_name: complaint_command_service
-#        ports:
-#            - "9711:9711"
-#        links:
-#            - mysql
-#            - kafka
-#            - zookeeper
-#            - cdcservice
-#            - configservice
-#            - authorizationservice
-#        environment:
-#            - SPRING_PROFILES_ACTIVE=dev
-#            - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-#    complaintqueryservice:
-#        image: tawcd.stc.com.sa/cq-r6-02
-#        container_name: complaint_query_service
-#        ports:
-#            - "9712:9712"
-#        links:
-#            - mysql
-#            - kafka
-#            - zookeeper
-#            - cdcservice
-#            - configservice
-#            - authorizationservice
-#        environment:
-#            - SPRING_PROFILES_ACTIVE=dev
-#            - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-#    workforcecommandservice:
-#        image: tawcd.stc.com.sa/workforce-command-r6-01
-#        container_name: workforce_command_service3
-#        ports:
-#            - "9783:9783"
-#        links:
-#            - mysql
-#            - kafka
-#            - zookeeper
-#            - cdcservice
-#            - configservice
-#            - authorizationservice
-#        environment:
-#            - SPRING_PROFILES_ACTIVE=dev
-#            - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-#    workforcequeryservice:
-#        image: tawcd.stc.com.sa/wfq2-r6-02
-#        ports:
-#            - "9854:9854"
-#        container_name: workforce_query_service3
-#        environment:
-#            - SPRING_PROFILES_ACTIVE=dev
-#            - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-#    reportservice:
-#        image: tawcd.stc.com.sa/reportengineservice-r5
-#        container_name: report_service
-#        ports:
-#            - "2424:2424"
-#        environment:
-#            - SPRING_PROFILES_ACTIVE=dev
-#            - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-#    notificationservie:
-#        image: tawcd.stc.com.sa/notification-service-r6-01
-#        container_name: notification_service
-#        ports:
-#            - "9863:9836"
-#        environment:
-#            - SPRING_PROFILES_ACTIVE=dev
-#            - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-#
-#    assignmentservice:
-#        image: tawcd.stc.com.sa/assignment-r6-02
-#        ports:
-#             - "8543:8543"
-#        environment:
-#             - SPRING_PROFILES_ACTIVE=dev
-#             - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-#        links:
-#             - cdcservice
-#             - configservice
-#             - authorizationservice
-#             - mysql
-#             - kafka
-#             - zookeeper
-#    reportqueryservice:
-#        image: tawcd.stc.com.sa/report-query-service-r6-01
-#        ports:
-#            - "4222:4222"
-#        environment:
-#             - SPRING_PROFILES_ACTIVE=dev
-#             - SPRING_CLOUD_CONFIG_URI=http://configservice:8888
-#        links:
-#             - cdcservice
-#             - configservice
-#             - authorizationservice
-#             - mysql
-#             - kafka
-#             - zookeeper
-#
-#    postgresql:
-#        image: postgres
-#        restart: always
-#        environment:
-#          POSTGRES_PASSWORD: example
-#        ports:
-#          - 5432:5432
-#    node:
-#        image: tawcd.stc.com.sa/webapp-node-r6-08-useridle
-#        ports:
-#            - "10001:10001"
-#        extra_hosts:
-#            - "workforcequeryservice:10.33.18.55"
-#            - "workforcecommandservice:10.33.18.55"
-#            - "complaintqueryservice:10.33.18.55"
-#            - "authorizationservice:10.33.18.55"
-#            - "notificationservice:10.33.18.55"
-#            - "assignmentservice:10.33.18.55"
-#            - "reportqueryservice:10.33.18.55"
-#    phpmyadmin:
-#       image: "phpmyadmin/phpmyadmin:4.7"
-#       ports:
-#           - "7003:80"
-#       environment:
-#           PMA_HOSTS: "10.33.18.80:40000,10.33.18.80:3306" # mysql url

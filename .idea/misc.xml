@@ -8,6 +8,10 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/book_ws/pom.xml" />
+        <option value="$PROJECT_DIR$/books_ws_view/pom.xml" />
+        <option value="$PROJECT_DIR$/common_backend/pom.xml" />
+        <option value="$PROJECT_DIR$/customer/pom.xml" />
         <option value="$PROJECT_DIR$/discovery_service/pom.xml" />
       </set>
     </option>

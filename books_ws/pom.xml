@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>books-store</artifactId>
+        <groupId>com.ahmed</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>books_ws</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <eventuateClientVersion>0.20.1.RELEASE</eventuateClientVersion>
+        <eventuateLocalVersion>0.30.4.RELEASE</eventuateLocalVersion>
+    </properties>
+<dependencies>
+    <dependency>
+        <groupId>io.eventuate.client.java</groupId>
+        <artifactId>eventuate-client-java-spring</artifactId>
+        <version>${eventuateClientVersion}</version>
+    </dependency>
+    <dependency>
+        <groupId>io.eventuate.local.java</groupId>
+
+        <artifactId>eventuate-local-java-jdbc</artifactId>
+        <version>${eventuateLocalVersion}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.ahmed</groupId>
+        <artifactId>common</artifactId>
+        <version>1.0.0</version>
+        <scope>compile</scope>
+    </dependency>
+</dependencies>
+
+
+
+</project>

@@ -1,0 +1,3 @@
+FROM openjdk:8-alpine
+COPY target/zuul_api_gateway-1.0.0.jar   zuul_api_gateway.jar
+ENTRYPOINT ["java","-jar","zuul_api_gateway.jar.jar"]

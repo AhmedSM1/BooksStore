@@ -3,12 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Zuul_api_gateway/Zuul_api_gateway.iml" filepath="$PROJECT_DIR$/Zuul_api_gateway/Zuul_api_gateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/book_ws/book_ws.iml" filepath="$PROJECT_DIR$/book_ws/book_ws.iml" />
       <module fileurl="file://$PROJECT_DIR$/books-store.iml" filepath="$PROJECT_DIR$/books-store.iml" />
-      <module fileurl="file://$PROJECT_DIR$/books_ws_view/books_ws_view.iml" filepath="$PROJECT_DIR$/books_ws_view/books_ws_view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/books_ws/books_ws.iml" filepath="$PROJECT_DIR$/books_ws/books_ws.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/common_backend/common_backend.iml" filepath="$PROJECT_DIR$/common_backend/common_backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/customer/customer.iml" filepath="$PROJECT_DIR$/customer/customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customer_ws/customer_ws.iml" filepath="$PROJECT_DIR$/customer_ws/customer_ws.iml" />
       <module fileurl="file://$PROJECT_DIR$/discovery_ws/discovery_ws.iml" filepath="$PROJECT_DIR$/discovery_ws/discovery_ws.iml" />
       <module fileurl="file://$PROJECT_DIR$/feign_client/feign_client.iml" filepath="$PROJECT_DIR$/feign_client/feign_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/order_ws/order_ws.iml" filepath="$PROJECT_DIR$/order_ws/order_ws.iml" />

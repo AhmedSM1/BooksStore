@@ -10,20 +10,20 @@
         <module name="Zuul_api_gateway" />
         <module name="feign_client" />
         <module name="common" />
-        <module name="customer" />
-        <module name="book_ws" />
-        <module name="books_ws_view" />
         <module name="order_ws" />
+        <module name="customer_ws" />
+        <module name="books_ws" />
         <module name="discovery_ws" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="book_ws" target="1.8" />
       <module name="books-store" target="1.8" />
+      <module name="books_ws" target="1.8" />
       <module name="books_ws_view" target="1.8" />
       <module name="common" target="1.8" />
       <module name="common_backend" target="1.8" />
-      <module name="customer" target="1.8" />
+      <module name="customer_ws" target="1.8" />
       <module name="discovery_service" target="1.8" />
       <module name="discovery_ws" target="1.8" />
       <module name="feign_client" target="1.8" />
@@ -35,10 +35,11 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Zuul_api_gateway" options="-parameters" />
       <module name="book_ws" options="-parameters" />
+      <module name="books_ws" options="-parameters" />
       <module name="books_ws_view" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="common_backend" options="-parameters" />
-      <module name="customer" options="-parameters" />
+      <module name="customer_ws" options="-parameters" />
       <module name="discovery_service" options="-parameters" />
       <module name="discovery_ws" options="-parameters" />
       <module name="feign_client" options="-parameters" />

@@ -1,0 +1,3 @@
+FROM openjdk:8-alpine
+COPY target/discovery_ws-1.0.0.jar   discoveryservice.jar
+ENTRYPOINT ["java","-jar","DiscoveryService.jar"]
