@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/customer_ws/customer_ws.iml" filepath="$PROJECT_DIR$/customer_ws/customer_ws.iml" />
       <module fileurl="file://$PROJECT_DIR$/discovery_ws/discovery_ws.iml" filepath="$PROJECT_DIR$/discovery_ws/discovery_ws.iml" />
       <module fileurl="file://$PROJECT_DIR$/feign_client/feign_client.iml" filepath="$PROJECT_DIR$/feign_client/feign_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order_book/order_book.iml" filepath="$PROJECT_DIR$/order_book/order_book.iml" />
       <module fileurl="file://$PROJECT_DIR$/order_ws/order_ws.iml" filepath="$PROJECT_DIR$/order_ws/order_ws.iml" />
     </modules>
   </component>

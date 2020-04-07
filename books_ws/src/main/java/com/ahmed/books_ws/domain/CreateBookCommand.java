@@ -1,13 +1,16 @@
 package com.ahmed.books_ws.domain;
 
-public class CreateBookCommand implements BooksCommand {
-    BooksInfo info;
 
-    public CreateBookCommand(BooksInfo info) {
+import com.ahmed.books_ws.model.BookInfo;
+
+public class CreateBookCommand implements BooksCommand {
+    BookInfo info;
+
+    public CreateBookCommand(BookInfo info) {
         this.info = info;
     }
 
-    public BooksInfo getInfo() {
+    public BookInfo getInfo() {
         return info;
     }
 }

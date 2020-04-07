@@ -10,6 +10,8 @@
     <module>feign_client</module>
     <module>customer_ws</module>
       <module>books_ws</module>
+    <module>order_book</module>
+
   </modules>
   <parent>
     <groupId>org.springframework.boot</groupId>

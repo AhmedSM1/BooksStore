@@ -16,7 +16,6 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerRepository = customerRepository;
     }
 
-
     @Override
     public EntityWithIdAndVersion<Customer> createCustomer(CustomerInfo info) {
         return customerRepository.save(new CreateCustomerCommand(info));

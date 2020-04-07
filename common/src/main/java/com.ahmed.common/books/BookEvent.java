@@ -1,8 +1,8 @@
-package com.ahmed.common.events;
+package com.ahmed.common.books;
 
 import io.eventuate.Event;
 import io.eventuate.EventEntity;
 
-@EventEntity(entity = " com.ahmed.book_ws.backend.BookAggregate")
+@EventEntity(entity = "com.ahmed.books_ws.domain.Books")
 public interface BookEvent extends Event {
 }
