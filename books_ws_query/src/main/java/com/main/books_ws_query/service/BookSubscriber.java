@@ -6,7 +6,7 @@ import com.ahmed.common.books.BookEditedEvent;
 import com.ahmed.common.books.BookInfo;
 import com.ahmed.common.books.BookRemovedEvent;
 import com.main.books_ws_query.data.BookEntity;
-import com.main.books_ws_query.model.BookDetails;
+
 import io.eventuate.DispatchedEvent;
 import io.eventuate.EventHandlerMethod;
 import io.eventuate.EventSubscriber;

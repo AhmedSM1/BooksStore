@@ -1,6 +1,8 @@
-package com.ahmed.customer_ws.domain;
+package com.ahmed.customer_ws.util;
 
 
+import com.ahmed.customer_ws.aggregate.Customer;
+import com.ahmed.customer_ws.command.CustomerCommand;
 import com.ahmed.customer_ws.service.CustomerService;
 import com.ahmed.customer_ws.service.CustomerServiceImpl;
 import io.eventuate.javaclient.spring.EnableEventHandlers;

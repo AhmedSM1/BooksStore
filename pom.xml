@@ -11,6 +11,7 @@
     <module>customer_ws</module>
       <module>books_ws</module>
       <module>books_ws_query</module>
+      <module>customer_ws_query</module>
 
   </modules>
   <parent>

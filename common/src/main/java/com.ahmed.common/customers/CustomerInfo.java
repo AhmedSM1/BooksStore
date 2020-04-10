@@ -1,4 +1,4 @@
-package com.ahmed.customer_ws.model;
+package com.ahmed.common.customers;
 
 public class CustomerInfo {
     private String firstName;

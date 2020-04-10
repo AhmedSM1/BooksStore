@@ -1,7 +1,6 @@
-package com.ahmed.customer_ws.domain;
+package com.ahmed.customer_ws.command;
 
-import com.ahmed.customer_ws.domain.CustomerCommand;
-import com.ahmed.customer_ws.model.CustomerInfo;
+import com.ahmed.common.customers.CustomerInfo;
 
 public class CreateCustomerCommand implements CustomerCommand {
     CustomerInfo info;

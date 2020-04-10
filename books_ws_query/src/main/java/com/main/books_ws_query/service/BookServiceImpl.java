@@ -3,12 +3,11 @@ package com.main.books_ws_query.service;
 import com.ahmed.common.books.BookInfo;
 import com.main.books_ws_query.data.BookEntity;
 import com.main.books_ws_query.data.BookRepo;
-import com.main.books_ws_query.model.BookDetails;
 import com.main.books_ws_query.util.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class BookServiceImpl implements BookService {
 

@@ -1,4 +1,4 @@
-package com.ahmed.customer_ws.domain;
+package com.ahmed.customer_ws.command;
 
 import io.eventuate.Command;
 
