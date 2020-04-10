@@ -1,23 +1,33 @@
 package com.ahmed.order_ws.backend.model;
 
+import com.ahmed.common.ValueObjects.Stock;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
 public class OrderBook {
+    private String bookId;
+    private String orderId;
+    private Stock amountRequested;
+    private double unitPrice;
 
-    @EmbeddedId
-    @JsonIgnore
-    private OrderBookPK primaryKey;
+    public OrderBook(String bookId, String orderId, Stock amountRequested, double unitPrice) {
+        this.bookId = bookId;
+        this.orderId = orderId;
+        this.amountRequested = amountRequested;
+        this.unitPrice = unitPrice;
+    }
 
-    @Column(nullable = false)
-    private Integer quantity;
+    public String getBookId() {
+        return bookId;
+    }
 
-    private double price;
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public Stock getAmountRequested() {
+        return amountRequested;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
 }
-

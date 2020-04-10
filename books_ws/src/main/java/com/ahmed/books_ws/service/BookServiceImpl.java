@@ -1,34 +1,48 @@
 package com.ahmed.books_ws.service;
 
-import com.ahmed.books_ws.domain.Books;
-import com.ahmed.books_ws.domain.BooksCommand;
+import com.ahmed.books_ws.aggregate.Books;
+import com.ahmed.books_ws.commands.BooksCommand;
 
-import com.ahmed.books_ws.domain.CreateBookCommand;
-import com.ahmed.books_ws.domain.UpdateBookCommand;
+import com.ahmed.books_ws.commands.CreateBookCommand;
 
-import com.ahmed.books_ws.model.BookInfo;
+import com.ahmed.books_ws.commands.DeleteBookCommand;
+import com.ahmed.books_ws.commands.UpdateBookCommand;
+import com.ahmed.common.books.BookInfo;
 import io.eventuate.EntityWithIdAndVersion;
 import io.eventuate.EntityWithMetadata;
 import io.eventuate.sync.AggregateRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BookServiceImpl implements BookService {
 
-    private final AggregateRepository<Books, BooksCommand> bookRepository;
+
+    private  AggregateRepository<Books, BooksCommand> bookRepository;
 
     public BookServiceImpl(AggregateRepository<Books, BooksCommand> bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-
     @Override
     public EntityWithIdAndVersion<Books> createBook(BookInfo bookInfo) {
-       return bookRepository.save(new CreateBookCommand(bookInfo));
+
+        return this.bookRepository.save(new CreateBookCommand(bookInfo));
     }
 
+    @Override
+    public EntityWithIdAndVersion<Books> deleteBook(String bookId) {
+        return this.bookRepository.update(bookId,new DeleteBookCommand(bookId));
+    }
 
 
     @Override
     public EntityWithMetadata<Books> findById(String bookId) {
         return bookRepository.find(bookId);
+    }
+
+    @Override
+    public EntityWithIdAndVersion<Books> updateBook(String bookId, BookInfo info) {
+        return this.bookRepository.update(bookId, new UpdateBookCommand(info));
     }
 }

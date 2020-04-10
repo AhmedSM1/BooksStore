@@ -58,10 +58,12 @@ services:
         "cdcDbPassword":"rootpassword",
         "oldDebeziumDbHistoryTopicName":"none"}]
 
-  adminer:
-    container_name: adminer
-    image: adminer
+  mongo:
+    image: mongo
     restart: always
     ports:
-      - 6002:8080
+    - "8081:8081"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
 

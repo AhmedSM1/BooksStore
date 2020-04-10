@@ -5,32 +5,27 @@ import com.ahmed.common.ValueObjects.Stock;
 import com.ahmed.common.books.BookEvent;
 
 public class BookEditedEvent implements BookEvent {
+    private BookInfo info;
+    private BookStatus status;
 
-    private String title;
-    private Stock stock;
-    private double price;
-    private String description;
-
-    public BookEditedEvent(String title, Stock stock, double price, String description) {
-        this.title = title;
-        this.stock = stock;
-        this.price = price;
-        this.description = description;
+    public BookEditedEvent(BookInfo info, BookStatus status) {
+        this.info = info;
+        this.status = status;
     }
 
-    public String getTitle() {
-        return title;
+    public BookInfo getInfo() {
+        return info;
     }
 
-    public Stock getStock() {
-        return stock;
+    public void setInfo(BookInfo info) {
+        this.info = info;
     }
 
-    public double getPrice() {
-        return price;
+    public BookStatus getStatus() {
+        return status;
     }
 
-    public String getDescription() {
-        return description;
+    public void setStatus(BookStatus status) {
+        this.status = status;
     }
 }

@@ -8,16 +8,12 @@ import java.util.Objects;
 
 public class BookCreatedEvent implements BookEvent {
 
-    private String title;
-    private String description;
-    private double price;
-    private Stock availableItemCount;
+    private BookInfo info;
+    private BookStatus bookStatus;
 
-    public BookCreatedEvent(String title, String description, double price, Stock availableItemCount) {
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.availableItemCount = availableItemCount;
+    public BookCreatedEvent(BookInfo info, BookStatus bookStatus) {
+        this.info = info;
+        this.bookStatus = bookStatus;
     }
 
     @Override
@@ -25,30 +21,20 @@ public class BookCreatedEvent implements BookEvent {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookCreatedEvent that = (BookCreatedEvent) o;
-        return Double.compare(that.price, price) == 0 &&
-                availableItemCount == that.availableItemCount &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(description, that.description);
+        return Objects.equals(info, that.info) &&
+                bookStatus == that.bookStatus;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, description, price, availableItemCount);
+        return Objects.hash(info, bookStatus);
     }
 
-    public String getTitle() {
-        return title;
+    public BookInfo getInfo() {
+        return info;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public Stock getAvailableItemCount() {
-        return availableItemCount;
+    public BookStatus getBookStatus() {
+        return bookStatus;
     }
 }

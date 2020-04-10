@@ -1,19 +1,13 @@
 package com.ahmed.order_ws.backend.commands;
 
 public class CreateOrderCommand implements OrderCommand {
-    private Long bookId;
-    private int  totalPrice;
+    private String customerId;
 
-    public CreateOrderCommand(Long bookId, int totalPrice) {
-        this.bookId = bookId;
-        this.totalPrice = totalPrice;
+    public CreateOrderCommand(String customerId) {
+        this.customerId = customerId;
     }
 
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
+    public String getCustomerId() {
+        return customerId;
     }
 }

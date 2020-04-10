@@ -10,6 +10,7 @@
         <module name="feign_client" />
         <module name="Zuul_api_gateway" />
         <module name="common" />
+        <module name="books_ws_query" />
         <module name="order_book" />
         <module name="order_ws" />
         <module name="customer_ws" />
@@ -21,6 +22,7 @@
       <module name="book_ws" target="1.8" />
       <module name="books-store" target="1.8" />
       <module name="books_ws" target="1.8" />
+      <module name="books_ws_query" target="1.8" />
       <module name="books_ws_view" target="1.8" />
       <module name="common" target="1.8" />
       <module name="common_backend" target="1.8" />
@@ -39,6 +41,7 @@
       <module name="Zuul_api_gateway" options="-parameters" />
       <module name="book_ws" options="-parameters" />
       <module name="books_ws" options="-parameters" />
+      <module name="books_ws_query" options="-parameters" />
       <module name="books_ws_view" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="common_backend" options="-parameters" />

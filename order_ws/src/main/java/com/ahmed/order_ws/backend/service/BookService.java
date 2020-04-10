@@ -1,6 +1,8 @@
 package com.ahmed.order_ws.backend.service;
 
-public interface BookService {
+import com.ahmed.order_ws.backend.model.BookRes;
 
-    void verifyBookId(Long bookId);
+public interface BookService {
+    void verifyBookId(String bookId);
+    void findByBookTitle(String bookTitle);
 }

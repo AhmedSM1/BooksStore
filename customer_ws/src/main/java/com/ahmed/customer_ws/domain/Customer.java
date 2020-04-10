@@ -17,6 +17,7 @@ public class Customer extends ReflectiveMutableCommandProcessingAggregate<Custom
     public List<Event> process(CreateCustomerCommand cmd) {
         return EventUtil.events(new CustomerCreatedEvent(cmd.info.getFirstName(),cmd.info.getLastName(),cmd.info.getEmail()));
     }
+
     public void apply(CustomerCreatedEvent event) {
       this.firstName = event.getFirstName();
       this.lastName = event.getLastName();
