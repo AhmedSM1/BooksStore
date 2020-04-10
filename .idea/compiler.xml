@@ -7,13 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common_backend" />
-        <module name="feign_client" />
+        <module name="order_book" />
         <module name="Zuul_api_gateway" />
+        <module name="feign_client" />
         <module name="common" />
         <module name="books_ws_query" />
-        <module name="order_book" />
         <module name="order_ws" />
         <module name="customer_ws" />
+        <module name="customer_ws_query" />
         <module name="books_ws" />
         <module name="discovery_ws" />
       </profile>
@@ -27,6 +28,7 @@
       <module name="common" target="1.8" />
       <module name="common_backend" target="1.8" />
       <module name="customer_ws" target="1.8" />
+      <module name="customer_ws_query" target="1.8" />
       <module name="discovery_service" target="1.8" />
       <module name="discovery_ws" target="1.8" />
       <module name="feign_client" target="1.8" />
@@ -46,6 +48,7 @@
       <module name="common" options="-parameters" />
       <module name="common_backend" options="-parameters" />
       <module name="customer_ws" options="-parameters" />
+      <module name="customer_ws_query" options="-parameters" />
       <module name="discovery_service" options="-parameters" />
       <module name="discovery_ws" options="-parameters" />
       <module name="feign_client" options="-parameters" />

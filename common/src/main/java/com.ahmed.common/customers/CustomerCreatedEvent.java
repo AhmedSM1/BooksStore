@@ -12,6 +12,19 @@ public class CustomerCreatedEvent implements CustomerEvent {
         this.info = info;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomerCreatedEvent that = (CustomerCreatedEvent) o;
+        return Objects.equals(info, that.info);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(info);
+    }
+
     public CustomerInfo getInfo() {
         return info;
     }
