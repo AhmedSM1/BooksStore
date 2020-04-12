@@ -20,16 +20,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-
-
-    @GetMapping
-    public String hello(){
-        return "Hello world";
-    }
-
-    @PostMapping(
-            consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
-            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping
     public CompletableFuture<ResponseEntity<CommandResponse>> createBook(@RequestBody BookInfo info){
         return this.bookService.createBook(info)
                 .thenApply(res->new ResponseEntity<>(new CommandResponse(res.getEntityId()), HttpStatus.CREATED));

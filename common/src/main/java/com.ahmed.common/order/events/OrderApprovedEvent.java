@@ -13,6 +13,9 @@ public class OrderApprovedEvent implements OrderEvent {
         this.unitPrice = unitPrice;
     }
 
+    public OrderApprovedEvent() {
+    }
+
     public String getBookId() {
         return bookId;
     }

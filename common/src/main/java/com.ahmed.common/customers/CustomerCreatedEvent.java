@@ -12,6 +12,9 @@ public class CustomerCreatedEvent implements CustomerEvent {
         this.info = info;
     }
 
+    public CustomerCreatedEvent() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

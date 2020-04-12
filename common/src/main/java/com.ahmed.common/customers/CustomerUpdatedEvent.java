@@ -7,6 +7,9 @@ public class CustomerUpdatedEvent implements CustomerEvent {
         this.info = info;
     }
 
+    public CustomerUpdatedEvent() {
+    }
+
     public CustomerInfo getInfo() {
         return info;
     }

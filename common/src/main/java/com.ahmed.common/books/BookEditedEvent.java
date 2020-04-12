@@ -10,6 +10,9 @@ public class BookEditedEvent implements BookEvent {
         this.status = status;
     }
 
+    public BookEditedEvent() {
+    }
+
     public BookInfo getInfo() {
         return info;
     }

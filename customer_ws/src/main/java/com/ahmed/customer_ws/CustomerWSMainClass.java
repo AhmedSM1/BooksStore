@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
 @EnableEurekaClient
-@Import({ EventuateDriverConfiguration.class})
 @EnableAutoConfiguration
 @ComponentScan
 public class CustomerWSMainClass {

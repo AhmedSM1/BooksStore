@@ -9,6 +9,9 @@ public class OrderRejectedEvent implements OrderEvent{
         this.bookId = bookId;
     }
 
+    public OrderRejectedEvent() {
+    }
+
     public String getOrderId() {
         return orderId;
     }

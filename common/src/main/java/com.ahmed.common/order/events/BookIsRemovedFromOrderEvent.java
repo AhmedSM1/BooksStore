@@ -13,6 +13,9 @@ public class BookIsRemovedFromOrderEvent implements OrderEvent {
         this.unitPrice = unitPrice;
     }
 
+    public BookIsRemovedFromOrderEvent() {
+    }
+
     public String getOrderId() {
         return orderId;
     }

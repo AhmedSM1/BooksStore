@@ -7,6 +7,9 @@ public class OrderCreatedEvent implements OrderEvent {
         this.customerId = customerId;
     }
 
+    public OrderCreatedEvent() {
+    }
+
     public String getCustomerId() {
         return customerId;
     }

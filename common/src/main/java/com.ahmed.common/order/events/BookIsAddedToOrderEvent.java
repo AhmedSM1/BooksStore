@@ -13,6 +13,9 @@ public class BookIsAddedToOrderEvent implements OrderEvent {
         this.bookAmount = bookAmount;
     }
 
+    public BookIsAddedToOrderEvent() {
+    }
+
     public String getBookId() {
         return bookId;
     }

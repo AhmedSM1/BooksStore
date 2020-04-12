@@ -20,6 +20,9 @@ public class CustomerEntity {
         this.email = email;
     }
 
+    public CustomerEntity() {
+    }
+
     public String getCustomerId() {
         return customerId;
     }

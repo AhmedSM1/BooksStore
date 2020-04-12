@@ -9,6 +9,9 @@ public class BookRemovedEvent implements BookEvent {
         this.status = status;
     }
 
+    public BookRemovedEvent() {
+    }
+
     public String getBookId() {
         return bookId;
     }

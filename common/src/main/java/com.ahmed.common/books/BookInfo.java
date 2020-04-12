@@ -5,14 +5,17 @@ public class BookInfo {
     private String description;
     private double price;
     private int availableItemCount;
-    private BookStatus status;
 
-    public BookInfo(String title, String description, double price, int availableItemCount, BookStatus status) {
+
+    public BookInfo(String title, String description, double price, int availableItemCount) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.availableItemCount = availableItemCount;
-        this.status = status;
+
+    }
+
+    public BookInfo() {
     }
 
     public String getTitle() {
@@ -31,7 +34,4 @@ public class BookInfo {
         return availableItemCount;
     }
 
-    public BookStatus getStatus() {
-        return status;
-    }
 }

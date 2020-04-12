@@ -7,6 +7,9 @@ public class CustomerDeletedEvent implements CustomerEvent {
         this.customerId = customerId;
     }
 
+    public CustomerDeletedEvent() {
+    }
+
     public String getCustomerId() {
         return customerId;
     }
