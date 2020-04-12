@@ -7,28 +7,30 @@ import com.ahmed.customer_ws.command.CustomerCommand;
 import com.ahmed.common.customers.CustomerInfo;
 import com.ahmed.customer_ws.command.DeleteCustomerCommand;
 import com.ahmed.customer_ws.command.UpdateCustomerCommand;
+import io.eventuate.AggregateRepository;
 import io.eventuate.EntityWithIdAndVersion;
-import io.eventuate.sync.AggregateRepository;
+
+import java.util.concurrent.CompletableFuture;
 
 public class CustomerServiceImpl implements CustomerService {
-    private final AggregateRepository<Customer, CustomerCommand> customerRepository;
+    private AggregateRepository<Customer, CustomerCommand> customerRepository;
 
     public CustomerServiceImpl(AggregateRepository<Customer, CustomerCommand> customerRepository) {
         this.customerRepository = customerRepository;
     }
 
     @Override
-    public EntityWithIdAndVersion<Customer> createCustomer(CustomerInfo info) {
+    public CompletableFuture<EntityWithIdAndVersion<Customer>> createCustomer(CustomerInfo info) {
         return customerRepository.save(new CreateCustomerCommand(info));
     }
 
     @Override
-    public EntityWithIdAndVersion<Customer> updateCustomer(String customerId, CustomerInfo info) {
+    public CompletableFuture<EntityWithIdAndVersion<Customer>> updateCustomer(String customerId, CustomerInfo info) {
         return customerRepository.update(customerId,new UpdateCustomerCommand(info));
     }
 
     @Override
-    public EntityWithIdAndVersion<Customer> deleteCustomer(String customerId) {
+    public CompletableFuture<EntityWithIdAndVersion<Customer>> deleteCustomer(String customerId) {
         return customerRepository.update(customerId,new DeleteCustomerCommand(customerId));
     }
 

@@ -27,6 +27,8 @@ public class Customer extends ReflectiveMutableCommandProcessingAggregate<Custom
     public void apply(CustomerCreatedEvent event) {
      this.info = event.getInfo();
     }
+
+
     public List<Event> process(UpdateCustomerCommand cmd) {
         return EventUtil.events(new CustomerUpdatedEvent(cmd.getInfo()));
     }
@@ -34,6 +36,8 @@ public class Customer extends ReflectiveMutableCommandProcessingAggregate<Custom
     public void apply(CustomerUpdatedEvent event) {
         this.info = event.getInfo();
     }
+
+
     public List<Event> process(DeleteCustomerCommand cmd) {
         return EventUtil.events(new CustomerDeletedEvent(cmd.getCustomerId()));
     }

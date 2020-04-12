@@ -5,9 +5,9 @@ import com.ahmed.customer_ws.aggregate.Customer;
 import com.ahmed.customer_ws.command.CustomerCommand;
 import com.ahmed.customer_ws.service.CustomerService;
 import com.ahmed.customer_ws.service.CustomerServiceImpl;
+import io.eventuate.AggregateRepository;
+import io.eventuate.EventuateAggregateStore;
 import io.eventuate.javaclient.spring.EnableEventHandlers;
-import io.eventuate.sync.AggregateRepository;
-import io.eventuate.sync.EventuateAggregateStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

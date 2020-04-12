@@ -15,6 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.CompletableFuture;
+
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
@@ -27,20 +29,20 @@ public class CustomerController {
 
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
                 produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<CustomerResponse> createCustomer(@RequestBody  CustomerInfo info){
-        EntityWithIdAndVersion<Customer> customer = service.createCustomer(info);
-        return new ResponseEntity<>(new CustomerResponse(customer.getEntityId()),HttpStatus.CREATED);
+    public CompletableFuture<ResponseEntity<CustomerResponse>> createCustomer(@RequestBody  CustomerInfo info){
+        return this.service.createCustomer(info)
+                .thenApply(res->new ResponseEntity<>(new CustomerResponse(res.getEntityId()), HttpStatus.CREATED));
     }
 
     @PutMapping(value = "/{customerId}",consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<CustomerResponse> updateCustomer(@PathVariable String customerId,@RequestBody CustomerInfo info) {
-        EntityWithIdAndVersion<Customer> customer = service.updateCustomer(customerId, info);
-        return new ResponseEntity<>(new CustomerResponse(customer.getEntityId()),HttpStatus.ACCEPTED);
+    public  CompletableFuture<ResponseEntity<CustomerResponse>>  updateCustomer(@PathVariable String customerId,@RequestBody CustomerInfo info) {
+        return this.service.updateCustomer(customerId,info)
+                .thenApply(res->new ResponseEntity<>(new CustomerResponse(res.getEntityId()), HttpStatus.ACCEPTED));
     }
 
     @DeleteMapping(value = "/{customerId}")
-    public ResponseEntity<CustomerResponse> deleteCustomer(@PathVariable String customerId){
-        EntityWithIdAndVersion<Customer> customer = service.deleteCustomer(customerId);
-        return new ResponseEntity<>(new CustomerResponse(customer.getEntityId()),HttpStatus.ACCEPTED);
+    public  CompletableFuture<ResponseEntity<CustomerResponse>>  deleteCustomer(@PathVariable String customerId){
+        return this.service.deleteCustomer(customerId)
+                .thenApply(res->new ResponseEntity<>(new CustomerResponse(res.getEntityId()), HttpStatus.ACCEPTED));
     }
 }

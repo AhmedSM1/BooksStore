@@ -5,8 +5,10 @@ import com.ahmed.common.customers.CustomerInfo;
 import io.eventuate.EntityWithIdAndVersion;
 import io.eventuate.EntityWithMetadata;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface CustomerService {
-    EntityWithIdAndVersion<Customer> createCustomer(CustomerInfo info);
-    EntityWithIdAndVersion<Customer> updateCustomer(String customerId,CustomerInfo info);
-    EntityWithIdAndVersion<Customer> deleteCustomer(String customerId);
+    CompletableFuture<EntityWithIdAndVersion<Customer>> createCustomer(CustomerInfo info);
+    CompletableFuture<EntityWithIdAndVersion<Customer>>updateCustomer(String customerId,CustomerInfo info);
+    CompletableFuture<EntityWithIdAndVersion<Customer>> deleteCustomer(String customerId);
 }

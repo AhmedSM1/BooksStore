@@ -20,14 +20,14 @@ public class CustomerQueryController {
     @Autowired
     CustomerService service;
 
-    @GetMapping(value = "/{customerId}",produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(value = "/{customerId}")
     public ResponseEntity<CustomerEntity> findCustomer(@PathVariable String customerId){
         CustomerEntity entity =  service.findById(customerId);
         return new ResponseEntity<>(entity, HttpStatus.OK);
     }
 
 
-    @GetMapping( produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping
     public ResponseEntity<List<CustomerEntity>> getAllBooks(){
         List<CustomerEntity> list = service.getAllCustomers();
         return new ResponseEntity<>(list, HttpStatus.OK);

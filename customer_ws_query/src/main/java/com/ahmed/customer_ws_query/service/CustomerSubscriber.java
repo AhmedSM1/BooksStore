@@ -11,7 +11,7 @@ import io.eventuate.EventHandlerMethod;
 import io.eventuate.EventSubscriber;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@EventSubscriber(id = "customer")
+@EventSubscriber(id = "com.ahmed.customer_ws.aggregate.Customer")
 public class CustomerSubscriber {
 
     CustomerService service;
