@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService {
+    @Autowired
     CustomerRepo repo;
 
-    @Autowired
-    public CustomerServiceImpl(CustomerRepo repo) {
-        this.repo = repo;
-    }
+
 
     @Override
     public void createCustomer(CustomerEntity entity) {

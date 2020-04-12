@@ -1,9 +1,6 @@
 package com.ahmed.common.books;
 
 
-import com.ahmed.common.ValueObjects.Stock;
-import com.ahmed.common.books.BookEvent;
-
 import java.util.Objects;
 
 public class BookCreatedEvent implements BookEvent {

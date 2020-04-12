@@ -8,41 +8,40 @@ import com.ahmed.books_ws.commands.CreateBookCommand;
 import com.ahmed.books_ws.commands.DeleteBookCommand;
 import com.ahmed.books_ws.commands.UpdateBookCommand;
 import com.ahmed.common.books.BookInfo;
+import io.eventuate.AggregateRepository;
 import io.eventuate.EntityWithIdAndVersion;
-import io.eventuate.EntityWithMetadata;
-import io.eventuate.sync.AggregateRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class BookServiceImpl implements BookService {
 
 
-    private  AggregateRepository<Books, BooksCommand> bookRepository;
+    private AggregateRepository<Books, BooksCommand> bookRepository;
+    Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
 
     public BookServiceImpl(AggregateRepository<Books, BooksCommand> bookRepository) {
         this.bookRepository = bookRepository;
     }
 
     @Override
-    public EntityWithIdAndVersion<Books> createBook(BookInfo bookInfo) {
-
+    public CompletableFuture<EntityWithIdAndVersion<Books>> createBook(BookInfo bookInfo) {
+        logger.debug("Book service_________create book()");
         return this.bookRepository.save(new CreateBookCommand(bookInfo));
     }
 
     @Override
-    public EntityWithIdAndVersion<Books> deleteBook(String bookId) {
+    public CompletableFuture<EntityWithIdAndVersion<Books>> deleteBook(String bookId) {
         return this.bookRepository.update(bookId,new DeleteBookCommand(bookId));
     }
 
-
     @Override
-    public EntityWithMetadata<Books> findById(String bookId) {
-        return bookRepository.find(bookId);
-    }
+    public CompletableFuture<EntityWithIdAndVersion<Books>> updateBook(String bookId, BookInfo info) {
+        logger.debug("Book service_________delete book()");
 
-    @Override
-    public EntityWithIdAndVersion<Books> updateBook(String bookId, BookInfo info) {
         return this.bookRepository.update(bookId, new UpdateBookCommand(info));
     }
 }

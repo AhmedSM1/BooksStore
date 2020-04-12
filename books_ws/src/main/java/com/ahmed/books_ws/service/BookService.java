@@ -5,13 +5,13 @@ import com.ahmed.common.books.BookInfo;
 import io.eventuate.EntityWithIdAndVersion;
 import io.eventuate.EntityWithMetadata;
 
+import java.util.concurrent.CompletableFuture;
+
 
 public interface BookService {
-    EntityWithIdAndVersion<Books> createBook(BookInfo info);
+    CompletableFuture<EntityWithIdAndVersion<Books>> createBook(BookInfo info);
 
-    EntityWithIdAndVersion<Books> deleteBook(String bookId);
+    CompletableFuture<EntityWithIdAndVersion<Books>> deleteBook(String bookId);
 
-    EntityWithMetadata<Books> findById(String bookId);
-
-    EntityWithIdAndVersion<Books> updateBook(String bookId, BookInfo info);
+    CompletableFuture<EntityWithIdAndVersion<Books>> updateBook(String bookId, BookInfo info);
 }

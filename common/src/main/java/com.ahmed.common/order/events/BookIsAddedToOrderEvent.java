@@ -1,18 +1,16 @@
 package com.ahmed.common.order.events;
 
-import com.ahmed.common.ValueObjects.Stock;
-
 public class BookIsAddedToOrderEvent implements OrderEvent {
     private String bookId;
     private String orderId;
-    private Stock amountAsked;
     private double unitPrice;
+    private int bookAmount;
 
-    public BookIsAddedToOrderEvent(String bookId, String orderId, Stock amountAsked, double unitPrice) {
+    public BookIsAddedToOrderEvent(String bookId, String orderId, double unitPrice, int bookAmount) {
         this.bookId = bookId;
         this.orderId = orderId;
-        this.amountAsked = amountAsked;
         this.unitPrice = unitPrice;
+        this.bookAmount = bookAmount;
     }
 
     public String getBookId() {
@@ -23,11 +21,11 @@ public class BookIsAddedToOrderEvent implements OrderEvent {
         return orderId;
     }
 
-    public Stock getAmountAsked() {
-        return amountAsked;
-    }
-
     public double getUnitPrice() {
         return unitPrice;
+    }
+
+    public int getBookAmount() {
+        return bookAmount;
     }
 }

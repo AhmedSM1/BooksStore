@@ -1,14 +1,12 @@
 package com.ahmed.common.order.events;
 
-import com.ahmed.common.ValueObjects.Stock;
-
 public class BookIsRemovedFromOrderEvent implements OrderEvent {
     private String orderId;
     private String bookId;
-    private Stock  amountToRemove;
+    private int  amountToRemove;
     private double unitPrice;
 
-    public BookIsRemovedFromOrderEvent(String orderId, String bookId, Stock amountToRemove, double unitPrice) {
+    public BookIsRemovedFromOrderEvent(String orderId, String bookId, int amountToRemove, double unitPrice) {
         this.orderId = orderId;
         this.bookId = bookId;
         this.amountToRemove = amountToRemove;
@@ -23,7 +21,7 @@ public class BookIsRemovedFromOrderEvent implements OrderEvent {
         return bookId;
     }
 
-    public Stock getAmountToRemove() {
+    public int getAmountToRemove() {
         return amountToRemove;
     }
 

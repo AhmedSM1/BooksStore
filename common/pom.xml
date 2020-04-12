@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ahmed</groupId>
     <artifactId>common</artifactId>
+    <packaging>pom</packaging>
     <properties>
         <eventuateLocalVersion>0.30.4.RELEASE</eventuateLocalVersion>
         <eventuateClientVersion>0.20.1.RELEASE</eventuateClientVersion>

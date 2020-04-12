@@ -1,9 +1,6 @@
 package com.ahmed.common.books;
 
 
-import com.ahmed.common.ValueObjects.Stock;
-import com.ahmed.common.books.BookEvent;
-
 public class BookEditedEvent implements BookEvent {
     private BookInfo info;
     private BookStatus status;

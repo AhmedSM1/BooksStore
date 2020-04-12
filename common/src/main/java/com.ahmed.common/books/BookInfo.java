@@ -1,8 +1,5 @@
 package com.ahmed.common.books;
 
-import com.ahmed.common.ValueObjects.Stock;
-import com.ahmed.common.books.BookStatus;
-
 public class BookInfo {
     private String title;
     private String description;

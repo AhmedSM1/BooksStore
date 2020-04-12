@@ -5,10 +5,11 @@ import com.ahmed.books_ws.commands.CreateBookCommand;
 import com.ahmed.books_ws.commands.DeleteBookCommand;
 import com.ahmed.books_ws.commands.UpdateBookCommand;
 import com.ahmed.common.books.*;
-import com.ahmed.common.ValueObjects.Stock;
 import io.eventuate.Event;
 import io.eventuate.EventUtil;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -18,11 +19,12 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
    private int availableItemCount;
    private BookInfo info;
    private BookStatus status;
+    Logger logger = LoggerFactory.getLogger(Books.class);
 
     public List<Event> process(CreateBookCommand cmd) {
         info = cmd.getInfo();
         availableItemCount = info.getAvailableItemCount();
-
+        logger.debug("Create book event");
         if (availableItemCount > 0){
             status = BookStatus.AVALIBLE;
         }else{
@@ -37,6 +39,8 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
     }
 
     public List<Event> process(UpdateBookCommand cmd) {
+        logger.debug("update book event");
+
         info = cmd.getInfo();
         availableItemCount = cmd.getInfo().getAvailableItemCount();
         if (availableItemCount > 0){
@@ -52,6 +56,8 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
         this.status = event.getStatus();
     }
     public List<Event> process(DeleteBookCommand cmd) {
+        logger.debug("delete book event");
+
         status = BookStatus.REMOVED;
         return EventUtil.events(new BookRemovedEvent(cmd.getBookId(),status));
     }

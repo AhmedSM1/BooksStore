@@ -51,7 +51,7 @@ services:
         "dataSourceUrl":"jdbc:mysql://mysql:3306/eventuate",
         "dataSourceUserName":"mysqluser",
         "dataSourcePassword":"mysqlpw",
-        "dataSourceDriverClassName":"com.mysql.jdbc.Driver",
+        "dataSourceDriverClassName":"com.mysql.cj.jdbc.Driver",
         "leadershipLockPath":"/eventuatelocal/cdc/leader/pipeline/1",
         "binlogClientId": 1,
         "cdcDbUserName":"root",
@@ -62,8 +62,5 @@ services:
     image: mongo
     restart: always
     ports:
-    - "8081:8081"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+    - 27018:27017
 
