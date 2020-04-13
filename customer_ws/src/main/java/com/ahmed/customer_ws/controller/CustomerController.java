@@ -27,8 +27,7 @@ public class CustomerController {
         this.service = service;
     }
 
-    @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
-                produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping
     public CompletableFuture<ResponseEntity<CustomerResponse>> createCustomer(@RequestBody  CustomerInfo info){
         return this.service.createCustomer(info)
                 .thenApply(res->new ResponseEntity<>(new CustomerResponse(res.getEntityId()), HttpStatus.CREATED));

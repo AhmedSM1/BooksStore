@@ -11,6 +11,9 @@ public class CustomerInfo {
         this.email = email;
     }
 
+    public CustomerInfo() {
+    }
+
     public String getFirstName() {
         return firstName;
     }
