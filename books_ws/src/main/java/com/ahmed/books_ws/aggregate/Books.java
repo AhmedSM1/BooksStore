@@ -4,6 +4,7 @@ import com.ahmed.books_ws.commands.BooksCommand;
 import com.ahmed.books_ws.commands.CreateBookCommand;
 import com.ahmed.books_ws.commands.DeleteBookCommand;
 import com.ahmed.books_ws.commands.UpdateBookCommand;
+
 import com.ahmed.common.books.*;
 import io.eventuate.Event;
 import io.eventuate.EventUtil;
@@ -13,6 +14,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+import static io.eventuate.EventUtil.events;
+
 
 public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, BooksCommand> {
 
@@ -20,6 +23,15 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
    private BookInfo info;
    private BookStatus status;
     Logger logger = LoggerFactory.getLogger(Books.class);
+
+    public Books(int availableItemCount, BookInfo info, BookStatus status) {
+        this.availableItemCount = availableItemCount;
+        this.info = info;
+        this.status = status;
+    }
+
+    public Books() {
+    }
 
     public List<Event> process(CreateBookCommand cmd) {
         info = cmd.getInfo();
@@ -30,7 +42,8 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
         }else{
             status = BookStatus.OUTOFSTOCK;
         }
-        return EventUtil.events(new BookCreatedEvent(info,status));
+       // return EventUtil.events(new BookCreatedEvent(info,status));
+        return events(new BookCreatedEvent(info,status));
     }
     public void apply(BookCreatedEvent event) {
 
@@ -49,7 +62,7 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
             status = BookStatus.OUTOFSTOCK;
         }
 
-        return EventUtil.events(new BookEditedEvent(info,status));
+        return events(new BookEditedEvent(info,status));
     }
     public void apply(BookEditedEvent event) {
         this.info = event.getInfo();
@@ -59,7 +72,7 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
         logger.debug("delete book event");
 
         status = BookStatus.REMOVED;
-        return EventUtil.events(new BookRemovedEvent(cmd.getBookId(),status));
+        return events(new BookRemovedEvent(cmd.getBookId(),status));
     }
     public void apply(BookRemovedEvent event) {
         this.status = event.getStatus();

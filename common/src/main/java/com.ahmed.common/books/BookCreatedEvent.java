@@ -13,6 +13,9 @@ public class BookCreatedEvent implements BookEvent {
         this.bookStatus = bookStatus;
     }
 
+    public BookCreatedEvent() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

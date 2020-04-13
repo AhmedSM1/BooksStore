@@ -11,12 +11,14 @@ import com.ahmed.common.books.BookRemovedEvent;
 import io.eventuate.DispatchedEvent;
 import io.eventuate.EventHandlerMethod;
 import io.eventuate.EventSubscriber;
+import io.eventuate.javaclient.spring.EnableEventHandlers;
 import io.eventuate.sync.EventHandlerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @EventSubscriber(id="Books")
+@EnableEventHandlers
 public class BookSubscriber {
 
     private BookService service;
@@ -30,7 +32,6 @@ public class BookSubscriber {
     @EventHandlerMethod
     public void createBook(DispatchedEvent<BookCreatedEvent> event){
         BookInfo info = event.getEvent().getInfo();
-        BookCreatedEvent e = event.getEvent();
         logger.debug("Create book from Book subscriber event details:  "+event.getEntityId()+" book "+event.getEvent().getInfo().getTitle());
         BookEntity entity = new BookEntity(event.getEntityId(),info.getTitle(),info.getDescription(),info.getPrice(),info.getAvailableItemCount(),event.getEvent().getBookStatus());
         this.service.createBook(entity);
