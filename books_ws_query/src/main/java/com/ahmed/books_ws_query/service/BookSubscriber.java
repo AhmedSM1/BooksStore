@@ -33,7 +33,7 @@ public class BookSubscriber {
     public void createBook(DispatchedEvent<BookCreatedEvent> event){
         BookInfo info = event.getEvent().getInfo();
         logger.debug("Create book from Book subscriber event details:  "+event.getEntityId()+" book "+event.getEvent().getInfo().getTitle());
-        BookEntity entity = new BookEntity(event.getEntityId(),info.getTitle(),info.getDescription(),info.getPrice(),info.getAvailableItemCount(),event.getEvent().getBookStatus());
+        BookEntity entity = new BookEntity(event.getEntityId(),info.getTitle(),info.getDescription(),info.getPrice(),event.getEvent().getBookStatus());
         this.service.createBook(entity);
     }
 

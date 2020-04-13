@@ -4,14 +4,12 @@ public class BookInfo {
     private String title;
     private String description;
     private double price;
-    private int availableItemCount;
 
 
-    public BookInfo(String title, String description, double price, int availableItemCount) {
+    public BookInfo(String title, String description, double price) {
         this.title = title;
         this.description = description;
         this.price = price;
-        this.availableItemCount = availableItemCount;
 
     }
 
@@ -29,9 +27,4 @@ public class BookInfo {
     public double getPrice() {
         return price;
     }
-
-    public int getAvailableItemCount() {
-        return availableItemCount;
-    }
-
 }

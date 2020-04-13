@@ -16,20 +16,19 @@ public class BookEntity {
     private String title;
     private String description;
     private double price;
-    private int availableItemCount;
     private BookStatus status;
 
-    public BookEntity(String bookId,String title, String description, double price, int availableItemCount, BookStatus status) {
+    public BookEntity(String bookId, String title, String description, double price, BookStatus status) {
         this.bookId = bookId;
         this.title = title;
         this.description = description;
         this.price = price;
-        this.availableItemCount = availableItemCount;
         this.status = status;
     }
 
     public BookEntity() {
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -37,7 +36,6 @@ public class BookEntity {
         if (o == null || getClass() != o.getClass()) return false;
         BookEntity that = (BookEntity) o;
         return Double.compare(that.price, price) == 0 &&
-                availableItemCount == that.availableItemCount &&
                 Objects.equals(bookId, that.bookId) &&
                 Objects.equals(title, that.title) &&
                 Objects.equals(description, that.description) &&
@@ -46,19 +44,7 @@ public class BookEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookId, title, description, price, availableItemCount, status);
-    }
-
-    @Override
-    public String toString() {
-        return "BookEntity{" +
-                "bookId='" + bookId + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", availableItemCount=" + availableItemCount +
-                ", status=" + status +
-                '}';
+        return Objects.hash(bookId, title, description, price, status);
     }
 
     public String getBookId() {
@@ -93,13 +79,6 @@ public class BookEntity {
         this.price = price;
     }
 
-    public int getAvailableItemCount() {
-        return availableItemCount;
-    }
-
-    public void setAvailableItemCount(int availableItemCount) {
-        this.availableItemCount = availableItemCount;
-    }
 
     public BookStatus getStatus() {
         return status;

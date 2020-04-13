@@ -19,13 +19,11 @@ import static io.eventuate.EventUtil.events;
 
 public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, BooksCommand> {
 
-   private int availableItemCount;
    private BookInfo info;
    private BookStatus status;
     Logger logger = LoggerFactory.getLogger(Books.class);
 
     public Books(int availableItemCount, BookInfo info, BookStatus status) {
-        this.availableItemCount = availableItemCount;
         this.info = info;
         this.status = status;
     }
@@ -35,14 +33,8 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
 
     public List<Event> process(CreateBookCommand cmd) {
         info = cmd.getInfo();
-        availableItemCount = info.getAvailableItemCount();
         logger.debug("Create book event");
-        if (availableItemCount > 0){
-            status = BookStatus.AVALIBLE;
-        }else{
-            status = BookStatus.OUTOFSTOCK;
-        }
-       // return EventUtil.events(new BookCreatedEvent(info,status));
+
         return events(new BookCreatedEvent(info,status));
     }
     public void apply(BookCreatedEvent event) {
@@ -53,14 +45,9 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
 
     public List<Event> process(UpdateBookCommand cmd) {
         logger.debug("update book event");
-
         info = cmd.getInfo();
-        availableItemCount = cmd.getInfo().getAvailableItemCount();
-        if (availableItemCount > 0){
-            status = BookStatus.AVALIBLE;
-        }else{
-            status = BookStatus.OUTOFSTOCK;
-        }
+        status = BookStatus.AVALIBLE;
+
 
         return events(new BookEditedEvent(info,status));
     }
@@ -78,9 +65,6 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
         this.status = event.getStatus();
     }
 
-    public int getAvailableItemCount() {
-        return availableItemCount;
-    }
 
     public BookInfo getInfo() {
         return info;

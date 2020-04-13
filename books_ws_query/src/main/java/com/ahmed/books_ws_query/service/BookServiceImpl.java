@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
             BookEntity entity = findById(bookId);
             entity.setTitle(details.getTitle());
             entity.setDescription(details.getDescription());
-            entity.setAvailableItemCount(details.getAvailableItemCount());
+
             entity.setPrice(details.getPrice());
             this.repo.save(entity);
 
