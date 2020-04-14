@@ -1,11 +1,11 @@
 package com.ahmed.order_ws_query.data;
 
-public class Books {
+public class Book {
     private String bookId;
     private String bookTitle;
-    private String unitPrice;
+    private double unitPrice;
 
-    public Books(String bookId, String bookTitle, String unitPrice) {
+    public Book(String bookId, String bookTitle, double unitPrice) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
         this.unitPrice = unitPrice;
@@ -27,11 +27,11 @@ public class Books {
         this.bookTitle = bookTitle;
     }
 
-    public String getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(String unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 }

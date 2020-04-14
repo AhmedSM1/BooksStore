@@ -13,7 +13,6 @@ public class BookEntity {
 
     @Id
     private String bookId;
-
     private String title;
     private String description;
     private double price;

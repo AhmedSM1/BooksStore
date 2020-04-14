@@ -30,7 +30,7 @@ public class Order extends ReflectiveMutableCommandProcessingAggregate<Order,Ord
 
     public List<Event> process(AddBookToOrderCommand cmd) {
         logger.debug("Order Aggregate ----  Add Book To order command"+cmd.getBookId());
-        return events(new BookIsAddedToOrderEvent(cmd.getBookId(),cmd.getOrderId()));
+        return events(new BookIsAddedToOrderEvent(cmd.getBookId(),cmd.getBookTitle(),cmd.getUnitPrice()));
     }
     public void apply(BookIsAddedToOrderEvent event) {
         this.orderState = OrderState.PENDING;

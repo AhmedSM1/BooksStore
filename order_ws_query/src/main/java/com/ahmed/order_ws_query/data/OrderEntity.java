@@ -12,9 +12,9 @@ public class OrderEntity {
     private String orderId;
     private String customerId;
     private double totalPrice;
-    private List<Books> books;
+    private List<Book> books;
 
-    public OrderEntity(String orderId, String customerId, double totalPrice, List<Books> books) {
+    public OrderEntity(String orderId, String customerId, double totalPrice, List<Book> books) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.totalPrice = totalPrice;
@@ -45,11 +45,11 @@ public class OrderEntity {
         this.totalPrice = totalPrice;
     }
 
-    public List<Books> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Books> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 }
