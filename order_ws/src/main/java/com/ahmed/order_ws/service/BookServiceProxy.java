@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class BookServiceProxy implements BookServiceRestTemplete {
     private RestTemplate restTemplate;
-
+    public static final String BOOK_WS_URL = "http://BOOKS_WS_QUERY/books/%s";
 
     private String bookServiceUrl;
 
@@ -20,7 +20,7 @@ public class BookServiceProxy implements BookServiceRestTemplete {
 
     @Override
     public void verifyBookId(String bookId) {
-        bookServiceUrl = String.format("http://BOOKS_WS_QUERY/books/%s",bookId);
+        bookServiceUrl = String.format(BOOK_WS_URL,bookId);
         ResponseEntity<Book> result = null;
         try {
             result = restTemplate.getForEntity(bookServiceUrl, Book.class, bookId);

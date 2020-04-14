@@ -1,9 +1,9 @@
 package com.ahmed.order_ws.service;
 
+import com.ahmed.order_ws.model.Customer;
 import com.ahmed.order_ws.model.CustomerResponseModel;
 import com.ahmed.order_ws.util.CustomerNotFoundException;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 public class CustomerServiceProxy implements CustomerServiceRestTemplete {
 
     private RestTemplate restTemplate;
-
+    public static final String CUSTOMER_WS_URL = "http://CUSTOMER_WS_QUERY/customers/%s";
 
     private String customerServiceUrl;
 
@@ -22,12 +22,11 @@ public class CustomerServiceProxy implements CustomerServiceRestTemplete {
 
     @Override
     public void verifyCustomerCustomerId(String customerId) {
-      customerServiceUrl = String.format("http:/CUSTOMER_WS_QUERY/customers%s",customerId);
-        ResponseEntity<CustomerResponseModel> result = null;
+      customerServiceUrl = String.format(CUSTOMER_WS_URL,customerId);
+        ResponseEntity<Customer> result = null;
         try {
-            result = restTemplate.exchange(customerServiceUrl, HttpMethod.GET, null, new ParameterizedTypeReference<CustomerResponseModel>() {
-            });
-            CustomerResponseModel customerResponseModel = result.getBody();
+            result = restTemplate.getForEntity(customerServiceUrl, Customer.class, customerId);
+
         } catch (HttpClientErrorException e) {
             switch (e.getStatusCode()) {
                 case NOT_FOUND:
