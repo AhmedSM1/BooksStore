@@ -4,6 +4,7 @@ import com.ahmed.order_ws.service.BookServiceProxy;
 import com.ahmed.order_ws.service.BookServiceRestTemplete;
 import com.ahmed.order_ws.service.CustomerServiceProxy;
 import com.ahmed.order_ws.service.CustomerServiceRestTemplete;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -11,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class ServiceProxyConfiguration {
     @Bean
+    @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

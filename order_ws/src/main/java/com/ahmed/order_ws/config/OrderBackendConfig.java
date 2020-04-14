@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Import;
 
 @EnableAutoConfiguration
 @Configuration
-@Import(EventuateDriverConfiguration.class)
+@Import({EventuateDriverConfiguration.class,ServiceProxyConfiguration.class})
 @EnableEventHandlers
 public class OrderBackendConfig {
 
@@ -28,6 +28,7 @@ public class OrderBackendConfig {
                                      BookServiceRestTemplete bookServiceRestTemplete) {
 
         return new OrderServiceImpl(orderRepo,customerServiceRestTemplete,bookServiceRestTemplete);
+
     }
     @Bean
     public AggregateRepository<Order, OrderCommand> orderRepository(EventuateAggregateStore eventStore) {

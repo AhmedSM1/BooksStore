@@ -1,20 +1,21 @@
 package com.ahmed.order_ws.service;
 
-import com.ahmed.order_ws.model.Customer;
-import com.ahmed.order_ws.model.CustomerResponseModel;
+import com.ahmed.customer_ws.aggregate.Customer;
 import com.ahmed.order_ws.util.CustomerNotFoundException;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 public class CustomerServiceProxy implements CustomerServiceRestTemplete {
 
     private RestTemplate restTemplate;
-    public static final String CUSTOMER_WS_URL = "http://CUSTOMER_WS_QUERY/customers/%s";
+    public static final String CUSTOMER_WS_URL = "http://localhost:52770/customers/";
 
     private String customerServiceUrl;
+
 
     public CustomerServiceProxy(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -22,11 +23,10 @@ public class CustomerServiceProxy implements CustomerServiceRestTemplete {
 
     @Override
     public void verifyCustomerCustomerId(String customerId) {
-      customerServiceUrl = String.format(CUSTOMER_WS_URL,customerId);
+        customerServiceUrl = CUSTOMER_WS_URL + customerId;
         ResponseEntity<Customer> result = null;
         try {
             result = restTemplate.getForEntity(customerServiceUrl, Customer.class, customerId);
-
         } catch (HttpClientErrorException e) {
             switch (e.getStatusCode()) {
                 case NOT_FOUND:
@@ -42,11 +42,11 @@ public class CustomerServiceProxy implements CustomerServiceRestTemplete {
                 throw new CustomerNotFoundException();
             default:
                 unrecognizedStatusCode(customerId, result.getStatusCode());
+        }}
+
+        private void unrecognizedStatusCode (String customerId, HttpStatus statusCode){
+            throw new RuntimeException(String.format("Unrecognized status code %s when fetching customerId %s",
+                    statusCode, customerId));
         }
     }
 
-    private void unrecognizedStatusCode(String customerId, HttpStatus statusCode) {
-        throw new RuntimeException(String.format("Unrecognized status code %s when fetching customerId %s",
-                statusCode, customerId));
-    }
-}
