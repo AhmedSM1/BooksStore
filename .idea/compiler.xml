@@ -8,13 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common_backend" />
         <module name="order_book" />
-        <module name="Zuul_api_gateway" />
         <module name="books_ws_query" />
         <module name="order_ws" />
         <module name="customer_ws" />
         <module name="customer_ws_query" />
         <module name="books_ws" />
-        <module name="discovery_ws" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

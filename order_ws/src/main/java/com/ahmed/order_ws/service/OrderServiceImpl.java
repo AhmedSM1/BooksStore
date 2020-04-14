@@ -6,6 +6,7 @@ import com.ahmed.order_ws.commands.CreateOrderCommand;
 import com.ahmed.order_ws.commands.OrderCommand;
 import com.ahmed.order_ws.commands.RemoveBookFromOrderCommand;
 import com.ahmed.order_ws.model.AddBookRequest;
+import com.ahmed.order_ws.model.CustomerResponseModel;
 import com.ahmed.order_ws.model.OrderInfo;
 import com.ahmed.order_ws.model.RemoveBookRequest;
 
@@ -35,10 +36,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public CompletableFuture<EntityWithIdAndVersion<Order>> createOrder(String customerId) {
-        customerService.verifyCustomerCustomerId(customerId);
+       CustomerResponseModel customer =  customerService.verifyCustomerCustomerId(customerId);
+
         logger.debug("Create Order service ");
         logger.debug("customer id:  "+customerId);
-        return orderRepository.save(new CreateOrderCommand(customerId));
+        return orderRepository.save(new CreateOrderCommand(customer.getCustomerId()));
     }
 
     @Override

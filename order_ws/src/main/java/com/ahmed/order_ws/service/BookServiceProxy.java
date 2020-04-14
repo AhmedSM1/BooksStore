@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class BookServiceProxy implements BookServiceRestTemplete {
     private RestTemplate restTemplate;
-    public static final String BOOK_WS_URL = "http://BOOKS_WS_QUERY/books/%s";
+    public static final String BOOK_WS_URL = "localhost:8011/books/%s";
 
     private String bookServiceUrl;
 

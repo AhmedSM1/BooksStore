@@ -1,5 +1,7 @@
 package com.ahmed.order_ws.service;
 
+import com.ahmed.order_ws.model.CustomerResponseModel;
+
 public interface CustomerServiceRestTemplete {
-    void verifyCustomerCustomerId(String customerId);
+    CustomerResponseModel verifyCustomerCustomerId(String customerId);
 }

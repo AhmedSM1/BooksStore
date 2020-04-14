@@ -8,11 +8,13 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/Zuul_api_gateway/pom.xml" />
         <option value="$PROJECT_DIR$/book_ws/pom.xml" />
         <option value="$PROJECT_DIR$/books_ws_view/pom.xml" />
         <option value="$PROJECT_DIR$/common_backend/pom.xml" />
         <option value="$PROJECT_DIR$/customer/pom.xml" />
         <option value="$PROJECT_DIR$/discovery_service/pom.xml" />
+        <option value="$PROJECT_DIR$/discovery_ws/pom.xml" />
         <option value="$PROJECT_DIR$/feign_client/pom.xml" />
         <option value="$PROJECT_DIR$/order_book/pom.xml" />
       </set>
