@@ -36,7 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerEntity findById(String customerId) {
-        return this.repo.findById(customerId).orElseThrow( CustomerNotFoundException::new);
+        return this.repo.findById(customerId).orElseThrow(CustomerNotFoundException::new);
     }
 
     @Override

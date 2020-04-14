@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("books")
+@RequestMapping("/books")
 public class BooksQueryController {
 
     @Autowired
     BookService service;
 
     @GetMapping(value = "/{bookId}",produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<BookEntity> findBook(@PathVariable String bookId){
+    public ResponseEntity<BookEntity> findBook(@PathVariable(value = "bookId") String bookId){
        BookEntity entity =  service.findById(bookId);
         return new ResponseEntity<>(entity, HttpStatus.OK);
     }

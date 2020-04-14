@@ -4,13 +4,15 @@ public class AddBookToOrderCommand implements OrderCommand {
       private String bookId;
       private String orderId;
       private double unitPrice;
-      private int bookAmount;
 
-    public AddBookToOrderCommand(String bookId, String orderId, double unitPrice, int bookAmount) {
+
+    public AddBookToOrderCommand(String bookId, String orderId, double unitPrice) {
         this.bookId = bookId;
         this.orderId = orderId;
         this.unitPrice = unitPrice;
-        this.bookAmount = bookAmount;
+    }
+
+    public AddBookToOrderCommand() {
     }
 
     public String getBookId() {
@@ -25,7 +27,5 @@ public class AddBookToOrderCommand implements OrderCommand {
         return unitPrice;
     }
 
-    public int getBookAmount() {
-        return bookAmount;
-    }
+
 }

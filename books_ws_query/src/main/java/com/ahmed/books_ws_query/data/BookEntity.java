@@ -2,9 +2,10 @@ package com.ahmed.books_ws_query.data;
 
 
 import com.ahmed.common.books.BookStatus;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Id;
+
 import java.util.Objects;
 
 @Document

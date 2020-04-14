@@ -8,10 +8,13 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>order_ws</artifactId>
      <packaging>jar</packaging>
 
+    <properties>
+        <eventuateClientVersion>0.20.1.RELEASE</eventuateClientVersion>
+        <eventuateLocalVersion>0.30.4.RELEASE</eventuateLocalVersion>
+    </properties>
     <dependencies>
 
         <dependency>
@@ -20,5 +23,16 @@
             <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>io.eventuate.client.java</groupId>
+            <artifactId>eventuate-client-java-spring</artifactId>
+            <version>${eventuateClientVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.local.java</groupId>
+            <artifactId>eventuate-local-java-jdbc</artifactId>
+            <version>${eventuateLocalVersion}</version>
+        </dependency>
+
     </dependencies>
 </project>

@@ -1,9 +1,9 @@
 package com.ahmed.customer_ws_query.data;
 
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Id;
 
 @Document
 public class CustomerEntity {

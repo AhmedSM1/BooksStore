@@ -33,14 +33,14 @@ public class CustomerController {
                 .thenApply(res->new ResponseEntity<>(new CustomerResponse(res.getEntityId()), HttpStatus.CREATED));
     }
 
-    @PutMapping(value = "/{customerId}",consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public  CompletableFuture<ResponseEntity<CustomerResponse>>  updateCustomer(@PathVariable String customerId,@RequestBody CustomerInfo info) {
+    @PutMapping(value = "/{customerId}")
+    public  CompletableFuture<ResponseEntity<CustomerResponse>>  updateCustomer(@PathVariable(value = "customerId") String customerId,@RequestBody CustomerInfo info) {
         return this.service.updateCustomer(customerId,info)
                 .thenApply(res->new ResponseEntity<>(new CustomerResponse(res.getEntityId()), HttpStatus.ACCEPTED));
     }
 
     @DeleteMapping(value = "/{customerId}")
-    public  CompletableFuture<ResponseEntity<CustomerResponse>>  deleteCustomer(@PathVariable String customerId){
+    public  CompletableFuture<ResponseEntity<CustomerResponse>>  deleteCustomer(@PathVariable(value = "customerId") String customerId){
         return this.service.deleteCustomer(customerId)
                 .thenApply(res->new ResponseEntity<>(new CustomerResponse(res.getEntityId()), HttpStatus.ACCEPTED));
     }

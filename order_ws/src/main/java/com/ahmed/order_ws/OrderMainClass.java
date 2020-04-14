@@ -4,12 +4,13 @@ package com.ahmed.order_ws;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
 @EnableEurekaClient
-public class MainClass {
+@ComponentScan
+public class OrderMainClass {
     public static void main(String[] args) {
-        SpringApplication.run(MainClass.class, args);
+        SpringApplication.run(OrderMainClass.class, args);
 
     }
 }

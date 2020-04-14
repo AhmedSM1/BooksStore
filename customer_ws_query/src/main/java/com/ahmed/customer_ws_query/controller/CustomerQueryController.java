@@ -21,14 +21,14 @@ public class CustomerQueryController {
     CustomerService service;
 
     @GetMapping(value = "/{customerId}")
-    public ResponseEntity<CustomerEntity> findCustomer(@PathVariable String customerId){
+    public ResponseEntity<CustomerEntity> findCustomer(@PathVariable(value = "customerId") String customerId){
         CustomerEntity entity =  service.findById(customerId);
         return new ResponseEntity<>(entity, HttpStatus.OK);
     }
 
 
     @GetMapping
-    public ResponseEntity<List<CustomerEntity>> getAllBooks(){
+    public ResponseEntity<List<CustomerEntity>> getAllCustomers(){
         List<CustomerEntity> list = service.getAllCustomers();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }

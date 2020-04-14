@@ -1,6 +1,6 @@
 package com.ahmed.order_ws.service;
 
-public interface BookService {
+public interface BookServiceRestTemplete {
     void verifyBookId(String bookId);
 
 }

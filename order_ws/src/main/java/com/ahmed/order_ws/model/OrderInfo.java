@@ -1,24 +1,16 @@
 package com.ahmed.order_ws.model;
 
-import java.util.List;
-
 public class OrderInfo {
     private String customerId;
-    private OrderState state;
-    private List<Books> booksList;
 
-
-    public OrderInfo(String customerId,OrderState state) {
+    public OrderInfo(String customerId) {
         this.customerId = customerId;
+    }
 
-        this.state = state;
+    public OrderInfo() {
     }
 
     public String getCustomerId() {
         return customerId;
-    }
-
-    public OrderState getState() {
-        return state;
     }
 }

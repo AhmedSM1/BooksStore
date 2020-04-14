@@ -1,4 +1,4 @@
-package com.ahmed.order_ws.backend;
+package com.ahmed.order_ws.util;
 
 public class BookNotFoundException extends RuntimeException {
 }

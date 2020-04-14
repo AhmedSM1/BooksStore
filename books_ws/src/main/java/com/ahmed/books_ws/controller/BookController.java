@@ -27,14 +27,14 @@ public class BookController {
         }
 
 
-    @PutMapping(value = "/{bookId}",consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public CompletableFuture<ResponseEntity<CommandResponse>> updateBook(@PathVariable String bookId,@RequestBody BookInfo info){
+    @PutMapping(value = "/{bookId}")
+    public CompletableFuture<ResponseEntity<CommandResponse>> updateBook(@PathVariable(value = "bookId") String bookId,@RequestBody BookInfo info){
         return this.bookService.updateBook(bookId,info)
                 .thenApply(res-> new ResponseEntity<>(new CommandResponse(res.getEntityId()), HttpStatus.ACCEPTED));
     }
 
     @DeleteMapping(value = "/{bookId}")
-    public CompletableFuture<ResponseEntity<CommandResponse>> updateBook(@PathVariable String bookId){
+    public CompletableFuture<ResponseEntity<CommandResponse>> updateBook(@PathVariable(value = "bookId") String bookId){
         return this.bookService.deleteBook(bookId)
                 .thenApply(res->new ResponseEntity<>(new CommandResponse(res.getEntityId()), HttpStatus.ACCEPTED));
 
