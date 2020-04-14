@@ -5,10 +5,7 @@ import com.ahmed.order_ws.commands.AddBookToOrderCommand;
 import com.ahmed.order_ws.commands.CreateOrderCommand;
 import com.ahmed.order_ws.commands.OrderCommand;
 import com.ahmed.order_ws.commands.RemoveBookFromOrderCommand;
-import com.ahmed.order_ws.model.AddBookRequest;
-import com.ahmed.order_ws.model.CustomerResponseModel;
-import com.ahmed.order_ws.model.OrderInfo;
-import com.ahmed.order_ws.model.RemoveBookRequest;
+import com.ahmed.order_ws.model.*;
 
 import io.eventuate.AggregateRepository;
 import io.eventuate.EntityWithIdAndVersion;
@@ -36,26 +33,25 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public CompletableFuture<EntityWithIdAndVersion<Order>> createOrder(String customerId) {
-       CustomerResponseModel customer =  customerService.verifyCustomerCustomerId(customerId);
-
+       CustomerResponseModel customer =  customerService.getCustomer(customerId);
         logger.debug("Create Order service ");
         logger.debug("customer id:  "+customerId);
         return orderRepository.save(new CreateOrderCommand(customer.getCustomerId()));
     }
 
     @Override
-    public CompletableFuture<EntityWithIdAndVersion<Order>> addBook(AddBookRequest request) {
-        bookService.verifyBookId(request.getBookId());
+    public CompletableFuture<EntityWithIdAndVersion<Order>> addBook(String orderId , AddBookRequest request) {
+        BookResponseModel book = bookService.getBook(request.getBookId());
         logger.debug("add book to order  service ");
         logger.debug("book id:  "+request.getBookId());
-        return orderRepository.save(new AddBookToOrderCommand(request.getBookId(),request.getOrderId(),request.getUnitPrice()));
+        return orderRepository.update(orderId,new AddBookToOrderCommand(book.getBookId(),orderId));
     }
 
     @Override
-    public CompletableFuture<EntityWithIdAndVersion<Order>> removeBook(RemoveBookRequest request) {
-        bookService.verifyBookId(request.getBookId());
+    public CompletableFuture<EntityWithIdAndVersion<Order>> removeBook(String orderId,RemoveBookRequest request) {
+        BookResponseModel book = bookService.getBook(request.getBookId());
         logger.debug("remove book to order  service ");
         logger.debug("book id:  "+request.getBookId());
-        return orderRepository.update(request.getOrderId(),new RemoveBookFromOrderCommand(request.getOrderId(),request.getBookId(),request.getMoneyToRemove()));
+        return orderRepository.update(orderId,new RemoveBookFromOrderCommand(book.getBookId(),orderId));
     }
 }

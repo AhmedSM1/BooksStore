@@ -9,6 +9,7 @@
       <module>books_ws</module>
       <module>books_ws_query</module>
       <module>customer_ws_query</module>
+      <module>order_ws_query</module>
 
   </modules>
   <parent>

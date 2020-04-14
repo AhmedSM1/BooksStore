@@ -14,7 +14,7 @@ import static io.eventuate.EventUtil.events;
 
 public class Order extends ReflectiveMutableCommandProcessingAggregate<Order,OrderCommand> {
 
-    private double totalPrice;
+
     private OrderState orderState;
     private String customerId;
     private String bookId;
@@ -30,21 +30,20 @@ public class Order extends ReflectiveMutableCommandProcessingAggregate<Order,Ord
 
     public List<Event> process(AddBookToOrderCommand cmd) {
         logger.debug("Order Aggregate ----  Add Book To order command"+cmd.getBookId());
-        return events(new BookIsAddedToOrderEvent(cmd.getBookId(),cmd.getOrderId(),cmd.getUnitPrice()));
+        return events(new BookIsAddedToOrderEvent(cmd.getBookId(),cmd.getOrderId()));
     }
     public void apply(BookIsAddedToOrderEvent event) {
         this.orderState = OrderState.PENDING;
        this.bookId = event.getBookId();
-       this.totalPrice += event.getUnitPrice();
+
     }
     public List<Event> process(RemoveBookFromOrderCommand cmd) {
         logger.debug("Order Aggregate ----  remove Book from order command"+cmd.getBookId());
-        return events(new BookIsRemovedFromOrderEvent(cmd.getOrderId(),cmd.getBookId(),cmd.getMoneyToRemove()));
+        return events(new BookIsRemovedFromOrderEvent(cmd.getOrderId(),cmd.getBookId()));
     }
     public void apply(BookIsRemovedFromOrderEvent event) {
         this.orderState = OrderState.PENDING;
         this.bookId = event.getBookId();
-        this.totalPrice -= event.getUnitPrice();
     }
     public List<Event> process(ApproveOrderCommand cmd) {
         logger.debug("Order Aggregate ----  approve order command"+cmd.getBookId());
@@ -61,11 +60,6 @@ public class Order extends ReflectiveMutableCommandProcessingAggregate<Order,Ord
     public void apply(OrderRejectedEvent event) {
         this.orderState = OrderState.REJECTED;
         this.bookId = event.getBookId();
-    }
-
-
-    public double getTotalPrice() {
-        return totalPrice;
     }
 
     public OrderState getOrderState() {

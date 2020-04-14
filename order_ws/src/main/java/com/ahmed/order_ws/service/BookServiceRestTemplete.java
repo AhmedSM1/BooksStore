@@ -1,6 +1,8 @@
 package com.ahmed.order_ws.service;
 
+import com.ahmed.order_ws.model.BookResponseModel;
+
 public interface BookServiceRestTemplete {
-    void verifyBookId(String bookId);
+    BookResponseModel getBook(String bookId);
 
 }

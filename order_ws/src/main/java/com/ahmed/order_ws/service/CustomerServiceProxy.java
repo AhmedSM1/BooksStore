@@ -8,8 +8,6 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 public class CustomerServiceProxy implements CustomerServiceRestTemplete {
-
-
     private RestTemplate restTemplate;
 
     public static final String CUSTOMER_WS_URL = "http://localhost:8013/customers/%s";
@@ -24,13 +22,13 @@ public class CustomerServiceProxy implements CustomerServiceRestTemplete {
         this.restTemplate = restTemplate;
     }
 
+
     @Override
-    public CustomerResponseModel verifyCustomerCustomerId(String customerId) {
-           customerServiceUrl = String.format(CUSTOMER_WS_URL,customerId);
-          CustomerResponseModel res  = restTemplate.getForObject(customerServiceUrl,CustomerResponseModel.class);
+    public CustomerResponseModel getCustomer(String customerId) {
+        customerServiceUrl = String.format(CUSTOMER_WS_URL,customerId);
+        CustomerResponseModel res  = restTemplate.getForObject(customerServiceUrl,CustomerResponseModel.class);
 
         return  res;
-
     }
-    }
+}
 

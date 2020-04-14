@@ -1,28 +1,27 @@
 package com.ahmed.order_ws.commands;
 
 public class RemoveBookFromOrderCommand implements OrderCommand {
-    private String orderId;
-    private String bookId;
-    private double moneyToRemove;
+      private String bookId;
+      private String orderId;
 
-    public RemoveBookFromOrderCommand(String orderId, String bookId, double moneyToRemove) {
-        this.orderId = orderId;
+    public RemoveBookFromOrderCommand(String bookId, String orderId) {
         this.bookId = bookId;
-        this.moneyToRemove = moneyToRemove;
-    }
-
-    public RemoveBookFromOrderCommand() {
-    }
-
-    public String getOrderId() {
-        return orderId;
+        this.orderId = orderId;
     }
 
     public String getBookId() {
         return bookId;
     }
 
-    public double getMoneyToRemove() {
-        return moneyToRemove;
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }
