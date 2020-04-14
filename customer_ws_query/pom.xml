@@ -29,11 +29,7 @@
             <artifactId>eventuate-client-java-spring</artifactId>
             <version>${eventuateClientVersion}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <scope>compile</scope>
-        </dependency>
+
         <dependency>
             <groupId>io.eventuate.local.java</groupId>
 

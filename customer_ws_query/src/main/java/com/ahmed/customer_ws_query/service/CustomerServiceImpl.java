@@ -12,8 +12,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepo repo;
 
-
-
     @Override
     public void createCustomer(CustomerEntity entity) {
         this.repo.save(entity);
