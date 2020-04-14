@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
-class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderRepo repo;
+
 
 
     @Override
@@ -25,14 +27,21 @@ class OrderServiceImpl implements OrderService {
         OrderEntity order = findById(orderId);
         List<Book> books = order.getBooks();
         books.add(book);
-        order.setTotalPrice(getTotalPrice(orderId));
+        order.setTotalPrice(getTotalPrice(books));
         return order.getBooks();
     }
 
     @Override
     public List<Book> removeBook(String orderId, Book entity) {
-        List<Book> books = findById(orderId).getBooks();
-        return books;
+        OrderEntity orderEntity = findById(orderId);
+        List<Book> books = orderEntity.getBooks();
+        try{
+            books.remove(entity);
+            orderEntity.setTotalPrice(getTotalPrice(books));
+            return books;
+        }catch (NoSuchElementException e){
+            return books;
+        }
     }
 
 
@@ -43,15 +52,17 @@ class OrderServiceImpl implements OrderService {
         return entity;
     }
 
-    private double getTotalPrice(String orderId){
-        OrderEntity entity = findById(orderId);
-        List<Book> books = entity.getBooks();
+    private double getTotalPrice(List<Book> books){
         double total = 0;
-        for (Book book : books) {
-            total += book.getUnitPrice();
-        }
-        entity.setTotalPrice(total);
-        return total;
+      if (books != null){
+          for (Book book : books) {
+              total += book.getUnitPrice();
+          }
+          return total;
+      }else {
+          return 0;
+      }
+
     }
 
 

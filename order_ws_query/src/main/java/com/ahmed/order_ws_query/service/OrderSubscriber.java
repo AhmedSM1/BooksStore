@@ -40,8 +40,7 @@ public class OrderSubscriber {
          bookTitle = event.getEvent().getBookTitle();
          unitPrice = event.getEvent().getUnitPrice();
           Book book = new Book(bookId,bookTitle,unitPrice);
-
-        orderService.addBook(orderId,book);
+         orderService.addBook(orderId,book);
     }
     @EventHandlerMethod
     public void removeOrder(DispatchedEvent<BookIsRemovedFromOrderEvent> event){
