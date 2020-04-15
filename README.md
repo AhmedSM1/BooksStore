@@ -12,13 +12,13 @@
 </ul>
 </h6>
 
-<h3>How to run your application</h3>
+<h5>How to run your application</h5>
 
-<h3>export DOCKER_HOST_IP= ... </h3>
-<h3>docker-compose up -d  </h3>
-<h3>Run book_ws</h3>
-<h3>Run book_ws_query</h3>
-<h3>Run customer_ws</h3>
-<h3>Run customer_ws_query</h3>
-<h3>Run order_ws</h3>
-<h3>Run order_ws_query</h3>
+<h5>export DOCKER_HOST_IP= ... </h5>
+<h5>docker-compose up -d  </h5>
+<h5>Run book_ws</h5>
+<h5>Run book_ws_query</h5>
+<h5>Run customer_ws</h5>
+<h5>Run customer_ws_query</h5>
+<h5>Run order_ws</h5>
+<h5>Run order_ws_query</h5>
