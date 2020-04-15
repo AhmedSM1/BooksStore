@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@EventSubscriber(id="Books")
+@EventSubscriber(id="com.ahmed.books_ws.aggregate.books")
 @EnableEventHandlers
 public class BookSubscriber {
 

@@ -40,11 +40,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public CompletableFuture<EntityWithIdAndVersion<Order>> addBook(String orderId , AddBookRequest request) {
-        BookResponseModel book = bookService.getBook(request.getBookId());
+    public CompletableFuture<EntityWithIdAndVersion<Order>> addBook(String orderId , String bookId) {
+        BookResponseModel book = bookService.getBook(bookId);
         logger.debug("add book to order  service ");
-        logger.debug("book id:  "+request.getBookId());
-        return orderRepository.update(orderId,new AddBookToOrderCommand(book.getBookId(),orderId));
+        logger.debug("book id:  "+bookId);
+        return orderRepository.update(orderId,new AddBookToOrderCommand(book.getBookId(),orderId,book.getTitle(),book.getPrice()));
     }
 
     @Override
@@ -52,6 +52,6 @@ public class OrderServiceImpl implements OrderService {
         BookResponseModel book = bookService.getBook(request.getBookId());
         logger.debug("remove book to order  service ");
         logger.debug("book id:  "+request.getBookId());
-        return orderRepository.update(orderId,new RemoveBookFromOrderCommand(book.getBookId(),orderId));
+        return orderRepository.update(orderId,new RemoveBookFromOrderCommand(book.getBookId(),orderId,book.getTitle(),book.getPrice()));
     }
 }

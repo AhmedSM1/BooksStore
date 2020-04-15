@@ -30,7 +30,7 @@ public class Order extends ReflectiveMutableCommandProcessingAggregate<Order,Ord
 
     public List<Event> process(AddBookToOrderCommand cmd) {
         logger.debug("Order Aggregate ----  Add Book To order command"+cmd.getBookId());
-        return events(new BookIsAddedToOrderEvent(cmd.getBookId(),cmd.getBookTitle(),cmd.getUnitPrice()));
+        return events(new BookIsAddedToOrderEvent(cmd.getBookId(),cmd.getOrderId(),cmd.getBookTitle(),cmd.getUnitPrice()));
     }
     public void apply(BookIsAddedToOrderEvent event) {
         this.orderState = OrderState.PENDING;
@@ -39,7 +39,7 @@ public class Order extends ReflectiveMutableCommandProcessingAggregate<Order,Ord
     }
     public List<Event> process(RemoveBookFromOrderCommand cmd) {
         logger.debug("Order Aggregate ----  remove Book from order command"+cmd.getBookId());
-        return events(new BookIsRemovedFromOrderEvent(cmd.getOrderId(),cmd.getBookId()));
+        return events(new BookIsRemovedFromOrderEvent(cmd.getBookId(),cmd.getOrderId(),cmd.getBootTitle(),cmd.getUnitPrice()));
     }
     public void apply(BookIsRemovedFromOrderEvent event) {
         this.orderState = OrderState.PENDING;

@@ -11,6 +11,6 @@ import java.util.concurrent.CompletableFuture;
 
 public interface OrderService {
     CompletableFuture<EntityWithIdAndVersion<Order>> createOrder(String CustomerId);
-    CompletableFuture<EntityWithIdAndVersion<Order>> addBook(String orderId,AddBookRequest request);
+    CompletableFuture<EntityWithIdAndVersion<Order>> addBook(String orderId,String bookId);
     CompletableFuture<EntityWithIdAndVersion<Order>> removeBook(String orderId,RemoveBookRequest request);
 }

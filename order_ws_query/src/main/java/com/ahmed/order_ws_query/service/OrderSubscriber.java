@@ -26,6 +26,8 @@ public class OrderSubscriber {
     public OrderSubscriber(OrderService orderService) {
         this.orderService = orderService;
     }
+
+
     @EventHandlerMethod
     public void createOrder(DispatchedEvent<OrderCreatedEvent> event){
         String orderId = event.getEntityId();
@@ -34,7 +36,7 @@ public class OrderSubscriber {
     }
 
     @EventHandlerMethod
-    public void addOrder(DispatchedEvent<BookIsAddedToOrderEvent> event){
+    public void addBookToOrder(DispatchedEvent<BookIsAddedToOrderEvent> event){
          orderId = event.getEntityId();
          bookId = event.getEvent().getBookId();
          bookTitle = event.getEvent().getBookTitle();
@@ -43,8 +45,8 @@ public class OrderSubscriber {
          orderService.addBook(orderId,book);
     }
     @EventHandlerMethod
-    public void removeOrder(DispatchedEvent<BookIsRemovedFromOrderEvent> event){
-        String orderId = event.getEntityId();
+    public void removeBookFromOrder(DispatchedEvent<BookIsRemovedFromOrderEvent> event){
+        String orderId = event.getEvent().getOrderId();
         String bookId = event.getEvent().getBookId();
         String bookTitle = event.getEvent().getBookTitle();
         double unitPrice = event.getEvent().getUnitPrice();

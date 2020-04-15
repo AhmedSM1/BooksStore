@@ -7,6 +7,9 @@ public class AddBookRequest {
         this.bookId = bookId;
     }
 
+    public AddBookRequest() {
+    }
+
     public String getBookId() {
         return bookId;
     }

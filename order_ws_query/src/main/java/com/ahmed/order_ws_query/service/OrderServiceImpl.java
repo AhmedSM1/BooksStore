@@ -52,6 +52,11 @@ public class OrderServiceImpl implements OrderService {
         return entity;
     }
 
+    @Override
+    public List<OrderEntity> findAll() {
+        return repo.findAll();
+    }
+
     private double getTotalPrice(List<Book> books){
         double total = 0;
       if (books != null){

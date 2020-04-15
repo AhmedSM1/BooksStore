@@ -24,11 +24,11 @@ public class OrderController  {
 
     @PostMapping("/{orderId}")
     public CompletableFuture<ResponseEntity<CommandResponse>> addBookToOrder(@PathVariable(value = "orderId") String orderId, @RequestBody AddBookRequest request){
-        return this.service.addBook(orderId,request)
+        return this.service.addBook(orderId,request.getBookId())
                 .thenApply(res->new ResponseEntity<>(new CommandResponse(res.getEntityId()), HttpStatus.ACCEPTED));
     }
 
-    @PostMapping("/{orderId}")
+    @DeleteMapping("/{orderId}")
     public CompletableFuture<ResponseEntity<CommandResponse>> removeBookFromOrder(@PathVariable(value = "orderId") String orderId, @RequestBody RemoveBookRequest request){
         return this.service.removeBook(orderId,request)
                 .thenApply(res->new ResponseEntity<>(new CommandResponse(res.getEntityId()), HttpStatus.ACCEPTED));
