@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -23,5 +25,10 @@ public class OrderController {
     public ResponseEntity<OrderEntity> getOrder(@PathVariable(value = "orderId")String orderId){
         OrderEntity entity = service.findById(orderId);
         return new ResponseEntity<>(entity, HttpStatus.OK);
+    }
+    @GetMapping
+    public ResponseEntity<List<OrderEntity>> getAll(){
+        List<OrderEntity> list = service.findAll();
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

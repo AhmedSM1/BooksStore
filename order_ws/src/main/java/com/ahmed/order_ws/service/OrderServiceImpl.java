@@ -44,6 +44,8 @@ public class OrderServiceImpl implements OrderService {
         BookResponseModel book = bookService.getBook(bookId);
         logger.debug("add book to order  service ");
         logger.debug("book id:  "+bookId);
+        //String bookId, String orderId, String bookTitle, double unitPrice command
+        //String bookId, String bookTitle, String orderId, double unitPrice event
         return orderRepository.update(orderId,new AddBookToOrderCommand(book.getBookId(),orderId,book.getTitle(),book.getPrice()));
     }
 

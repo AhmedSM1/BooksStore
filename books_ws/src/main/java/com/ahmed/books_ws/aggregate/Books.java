@@ -34,7 +34,7 @@ public class Books extends ReflectiveMutableCommandProcessingAggregate<Books, Bo
     public List<Event> process(CreateBookCommand cmd) {
         info = cmd.getInfo();
         logger.debug("Create book event");
-
+        status = BookStatus.AVALIBLE;
         return events(new BookCreatedEvent(info,status));
     }
     public void apply(BookCreatedEvent event) {

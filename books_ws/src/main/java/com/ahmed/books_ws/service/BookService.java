@@ -11,6 +11,7 @@ import java.util.concurrent.CompletableFuture;
 public interface BookService {
     CompletableFuture<EntityWithIdAndVersion<Books>> createBook(BookInfo info);
 
+
     CompletableFuture<EntityWithIdAndVersion<Books>> deleteBook(String bookId);
 
     CompletableFuture<EntityWithIdAndVersion<Books>> updateBook(String bookId, BookInfo info);

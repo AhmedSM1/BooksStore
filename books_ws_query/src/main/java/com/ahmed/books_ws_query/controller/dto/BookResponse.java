@@ -1,25 +1,24 @@
-package com.ahmed.order_ws.model;
+package com.ahmed.books_ws_query.controller.dto;
 
 import com.ahmed.common.books.BookStatus;
 
-import java.io.Serializable;
+public class BookResponse {
 
-public class BookResponseModel implements Serializable {
     private String bookId;
     private String title;
     private String description;
     private double price;
     private BookStatus status;
 
-    public BookResponseModel(String bookId, String title, String description, double price, BookStatus status) {
+    public BookResponse() {
+    }
+
+    public BookResponse(String bookId, String title, String description, double price, BookStatus status) {
         this.bookId = bookId;
         this.title = title;
         this.description = description;
         this.price = price;
         this.status = status;
-    }
-
-    public BookResponseModel() {
     }
 
     public String getBookId() {
@@ -62,3 +61,5 @@ public class BookResponseModel implements Serializable {
         this.status = status;
     }
 }
+
+

@@ -37,12 +37,12 @@ public class OrderSubscriber {
 
     @EventHandlerMethod
     public void addBookToOrder(DispatchedEvent<BookIsAddedToOrderEvent> event){
-         orderId = event.getEntityId();
-         bookId = event.getEvent().getBookId();
-         bookTitle = event.getEvent().getBookTitle();
-         unitPrice = event.getEvent().getUnitPrice();
-          Book book = new Book(bookId,bookTitle,unitPrice);
-         orderService.addBook(orderId,book);
+
+//         bookId = event.getEvent().getBookId();
+//         bookTitle = event.getEvent().getBookTitle();
+//         unitPrice = event.getEvent().getUnitPrice();
+//          Book book = new Book(bookId,bookTitle,unitPrice);
+         orderService.addBook(event.getEvent().getOrderId(), event.getEvent().getBookId(), event.getEvent().getBookTitle(), event.getEvent().getUnitPrice());
     }
     @EventHandlerMethod
     public void removeBookFromOrder(DispatchedEvent<BookIsRemovedFromOrderEvent> event){

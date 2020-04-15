@@ -1,6 +1,7 @@
 package com.ahmed.books_ws_query.service;
 
 import com.ahmed.books_ws_query.data.BookEntity;
+import com.ahmed.books_ws_query.model.BookModel;
 import com.ahmed.common.books.BookInfo;
 
 import java.util.List;
@@ -13,8 +14,8 @@ public interface BookService {
 
     void deleteBook(String bookId);
 
-    BookEntity findById(String bookId);
-
-    List<BookEntity> getAllBooks();
-
+    BookModel findById(String bookId);
+    //reutrn model
+    List<BookModel> getAllBooks();
+    //list<model>
 }
