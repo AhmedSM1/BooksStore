@@ -12,7 +12,7 @@
 </ul>
 </h6>
 
-<h5>How to run your application</h5>
+<h5>How to run the application</h5>
 <ul>
 <li>
 <h5>export DOCKER_HOST_IP= ... </h5>
