@@ -13,12 +13,28 @@
 </h6>
 
 <h5>How to run your application</h5>
-
+<ul>
+<li>
 <h5>export DOCKER_HOST_IP= ... </h5>
+</li>
+<li>
 <h5>docker-compose up -d  </h5>
+</li>
+<li>
 <h5>Run book_ws</h5>
+</li>
+<li>
 <h5>Run book_ws_query</h5>
+</li>
+<li>
 <h5>Run customer_ws</h5>
+</li>
+<li>
 <h5>Run customer_ws_query</h5>
+</li>
+<li>
 <h5>Run order_ws</h5>
+</li>
+<li>
 <h5>Run order_ws_query</h5>
+</li>
